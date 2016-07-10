@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="id">
+<head>
+	<meta charset="utf-8">
+	<title>FreskKode</title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<!--BEGIN BOWER PLUGINS-->
+	<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="bower_components/fontawesome/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="bower_components/datatables-bootstrap3/BS3/assets/css/datatables.css">
+	<link rel="stylesheet" type="text/css" href="bower_components/select2/dist/css/select2.min.css">
+	<!--END BOWER PLUGINS-->
+
+	<link rel="stylesheet" type="text/css" href="assets/global/css/default.css" />
+	<link rel="stylesheet" type="text/css" href="assets/global/css/layout.css" />
+	<link rel="stylesheet" type="text/css" href="assets/global/css/workspace.css" />
+	<link rel="stylesheet" type="text/css" href="assets/global/css/workspace_color.css" />
+	<link rel="stylesheet" type="text/css" href="assets/global/css/tour.css" />
+	<link rel="stylesheet" type="text/css" href="assets/global/css/dialog.css" />
+	<link rel="stylesheet" type="text/css" href="assets/pages/css/home.css" />
+	<link rel="stylesheet" type="text/css" href="assets/pages/css/projects.css" />
+</head>
+<body>
+<style>
+#outer-dropzone {
+	height: 140px;
+}
+
+#inner-dropzone {
+	height: 80px;
+}
+
+.dropzone {
+	background-color: #ccc;
+	border: dashed 4px transparent;
+	border-radius: 4px;
+	margin: 10px auto 30px;
+	padding: 10px;
+	width: 80%;
+	transition: background-color 0.3s;
+}
+
+.drop-active {
+	border-color: #aaa;
+}
+
+.drop-target {
+	background-color: #29e;
+	border-color: #fff;
+	border-style: solid;
+}
+
+.drag-drop {
+	position: absolute;
+	display: inline-block;
+	min-width: 40px;
+	padding: 2em 0.5em;
+
+	color: #fff;
+	background-color: #29e;
+	border: solid 2px #fff;
+
+	-webkit-transform: translate(0px, 0px);
+					transform: translate(0px, 0px);
+
+	transition: background-color 0.3s;
+}
+
+.drag-drop.can-drop {
+	color: #000;
+	background-color: #4e4;
+}
+</style>
+<div id="no-drop" class="draggable drag-drop"> #no-drop </div>
+
+<div id="yes-drop" class="draggable drag-drop"> #yes-drop </div>
+
+
+<div id="outer-dropzone" class="dropzone">
+	#outer-dropzone
+	<div id="inner-dropzone" class="dropzone">#inner-dropzone</div>
+ </div>
+
+<ul id="my-list">
+  <li id="yes-drop"> item 1 </li>
+  <li id="yes-drop"> item 2 </li>
+  <li id="yes-drop"> item 3 </li>
+</ul>
+  <script src="bower_components/jquery/dist/jquery.min.js" type="text/javascript"></script>
+	<script src="bower_components/interact.js/dist/interact.min.js"></script>
+	<script>
+var dragProperties = {
+	// enable inertial throwing
+	inertia: false,
+	// keep the element within the area of it's parent
+	restrict: {
+		restriction: "parent",
+		endOnly: true,
+		elementRect: { top: 0, left: 0, bottom: 0, right: 0 }
+	},
+	// enable autoScroll
+	autoScroll: true,
+
+	onstart: function (event) {
+		var target = event.target;
+		$(target).clone().insertAfter($(target));
+		$(target).attr('style','position:absolute');
+	},
+
+	// call this function on every dragmove event
+	onmove:  function (event) {
+		var target = event.target,
+			// keep the dragged position in the data-x/data-y attributes
+			x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx,
+			y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy;
+
+		// translate the element
+		target.style.webkitTransform =
+			target.style.transform =
+				'translate(' + x + 'px, ' + y + 'px)';
+
+		// update the posiion attributes
+		target.setAttribute('data-x', x);
+		target.setAttribute('data-y', y);
+	},
+	// call this function on every dragend event
+	onend: function (event) {
+		$(event.target).remove();
+	}
+}
+
+
+var myList = document.querySelector('#my-list');
+
+interact('li', {
+    context: myList
+  })
+  .draggable(dragProperties);
+
+
+	// target elements with the "draggable" class
+	interact('.draggable')
+	.draggable(dragProperties);
+
+	var drag_expression = {
+		// only accept elements matching this CSS selector
+		accept: '#yes-drop',
+		overlap: 0.75,
+
+		// listen for drop related events:
+
+		ondropactivate: function (event) {
+			// add active dropzone feedback
+			event.target.classList.add('drop-active');
+		},
+		ondragenter: function (event) {
+			var draggableElement = event.relatedTarget,
+			dropzoneElement = event.target;
+
+			// feedback the possibility of a drop
+			dropzoneElement.classList.add('drop-target');
+			draggableElement.classList.add('can-drop');
+			draggableElement.textContent = 'Dragged in';
+		},
+		ondragleave: function (event) {
+			// remove the drop feedback style
+			event.target.classList.remove('drop-target');
+			event.relatedTarget.classList.remove('can-drop');
+			event.relatedTarget.textContent = 'Dragged out';
+		},
+		ondrop: function (event) {
+			event.relatedTarget.textContent = 'Dropped';
+		},
+		ondropdeactivate: function (event) {
+			// remove active dropzone feedback
+			event.target.classList.remove('drop-active');
+			event.target.classList.remove('drop-target');
+		}
+	}
+	interact('.dropzone').dropzone(drag_expression);
+	</script>
+
+</body>
+</html> 

@@ -1,0 +1,21 @@
+{
+  "name": "hapi-rest-demo",
+  "version": "0.0.0",
+  "description": "First REST API with Hapi & Mongose",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "boom": ">=2.6.1",
+    "hapi": ">=8.2.0",
+    "hapi-auth-basic": ">=1.0.0",
+    "joi": ">=5.1.0",
+    "mongoose": ">=3.8.23"
+  },
+  "main":"./server/server.js",
+  "license": "MIT",
+  "author": {
+    "name": "mva",
+    "email": "valdiearsanur@gmail.com"
+  }
+}

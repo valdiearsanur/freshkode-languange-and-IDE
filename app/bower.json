@@ -1,0 +1,19 @@
+{
+  "name": "freshKode",
+  "version": "0.0.2",
+  "dependencies": {
+    "jquery": "#2.1.0",
+    "backbone": "#1.1.0",
+    "jquery-sortable": "#0.9.13",
+    "bootstrap": "#3.3.4",
+    "backbone.localStorage": "#1.1.16",
+    "datatables": "#1.10.7",
+    "fontawesome": "#4.4.0",
+    "datatables-bootstrap3": "*",
+    "moment": "#2.10.3",
+    "select2": "#4.0.0",
+    "jmpress": "#0.4.5",
+    "bootstrap-touchspin": "#3.0.1"
+  },
+  "devDependencies": {}
+}

@@ -1,0 +1,284 @@
+/*STATEMENT*/
+	/*PERCABANGAN*/
+	.tboxstatement > li.kondisi, .groupstatement > li.kondisi {
+		border-color: #d40b0b;
+	}
+	.tboxstatement > li.kondisi::after, .groupstatement > li.kondisi::after {
+		background-color: #d40b0b;
+	}
+	.tboxstatement li.kondisi > .block-statement-endline, .groupstatement li.kondisi > .block-statement-endline {
+		background-color: #d40b0b;
+	}
+	.tboxstatement > li.kondisi > .arg, .groupstatement > li.kondisi > .arg {
+		background-color: #d40b0b;
+		color: #fff;
+	}
+
+	/*PERULANGAN*/
+	.tboxstatement > li.perulangan, .groupstatement > li.perulangan {
+		border-color: #d40bd2;
+	}
+	.tboxstatement > li.perulangan::after, .groupstatement > li.perulangan::after {
+		background-color: #d40bd2;
+	}
+	.tboxstatement li.perulangan > .block-statement-endline, .groupstatement li.perulangan > .block-statement-endline {
+		background-color: #d40bd2;
+	}
+	.tboxstatement > li.perulangan > .arg, .groupstatement > li.perulangan > .arg {
+		background-color: #d40bd2;
+		color: #fff;
+	}
+
+
+	/*INPUT OUTPUT*/
+	.tboxstatement > li.input, .groupstatement > li.input {
+		border-color: #e2640a;
+	}
+	.tboxstatement > li.input > .arg, .groupstatement > li.input > .arg {
+		background-color: #e2640a;
+		color: #fff;
+	}
+	.tboxstatement > li.output, .groupstatement > li.output {
+		border-color: #100bd4;
+	}
+	.tboxstatement > li.output > .arg, .groupstatement > li.output > .arg {
+		background-color: #100bd4;
+		color: #fff;
+	}
+
+
+	/*OUTPUT*/
+	.tboxstatement > li.variabel, .groupstatement > li.variabel {
+		border-color: #35ADB6;
+	}
+	.tboxstatement > li.variabel::after, .groupstatement > li.variabel::after {
+		background-color: #35ADB6;
+	}
+	.tboxstatement > li.variabel > .arg, .groupstatement > li.variabel > .arg {
+		background-color: #35ADB6;
+		color: #fff;
+	}
+/*[ENDOF] STATEMENT*/
+
+/*EKSPRESI*/
+
+	/*CONSTANT*/
+	.groupexpression > li.exprdefault[data-token="INTEGER-CONSTANT"], .tboxstatement > li .definition span.exprdefault[data-token="INTEGER-CONSTANT"], .tboxexpression > li .definition span.exprdefault[data-token="INTEGER-CONSTANT"] {
+		background-color: #ecebc2;
+		color: #525010;
+	}
+	.groupexpression.operation > li.exprdefault[data-token="INTEGER-CONSTANT"], .tboxexpression > li.operation > .arg > span[data-token="INTEGER-CONSTANT"] {
+		border: 1px solid #d5d4b0;
+	}
+	.groupexpression li.exprdefault[data-token="INTEGER-CONSTANT"] .expr-input-btn {
+		color: #525010;
+		background-color: #d5d4b0;
+	}
+	.groupexpression li.exprdefault[data-token="INTEGER-CONSTANT"] .expr-input-prefix {
+		color: #525010;
+	}
+	.sample-expr.integer {
+		background: #ecebc2;
+		border: 1px solid #d5d4b0;
+	}
+	.sample-var.integer {
+    	background-color: #ecebc2;
+	}
+	.sample-var.integer:before {
+    	border-right: 10px solid #ecebc2;
+	}
+	.sample-var.integer:after {
+    	border-left: 10px solid #ecebc2;
+	}
+	.groupexpression > li.exprdefault[data-token="REAL-CONSTANT"], .tboxstatement > li .definition span.exprdefault[data-token="REAL-CONSTANT"], .tboxexpression > li .definition span.exprdefault[data-token="REAL-CONSTANT"] {
+		background-color: #c9ecc3;
+		color: #1a5310;
+	}
+	.groupexpression.operation > li.exprdefault[data-token="REAL-CONSTANT"], .tboxexpression > li.operation > .arg > span[data-token="REAL-CONSTANT"] {
+		border: 1px solid #b3d3ae;
+	}
+	.groupexpression li.exprdefault[data-token="REAL-CONSTANT"] .expr-input-btn {
+		color: #1a5310;
+		background-color: #b3d3ae;
+	}
+	.groupexpression li.exprdefault[data-token="REAL-CONSTANT"] .expr-input-prefix {
+		color: #1a5310;
+	}
+	.sample-expr.real {
+		background: #c9ecc3;
+		border: 1px solid #b3d3ae;
+	}
+	.sample-var.real {
+    	background-color: #c9ecc3;
+	}
+	.sample-var.real:before {
+    	border-right: 10px solid #c9ecc3;
+	}
+	.sample-var.real:after {
+    	border-left: 10px solid #c9ecc3;
+	}
+	.groupexpression > li.exprdefault[data-token="LOGICAL-CONSTANT"], .tboxstatement > li .definition span.exprdefault[data-token="LOGICAL-CONSTANT"], .tboxexpression > li .definition span.exprdefault[data-token="LOGICAL-CONSTANT"] {
+		background-color: #e9cdbf;
+		color: #472311;
+	}
+	.groupexpression.operation > li.exprdefault[data-token="LOGICAL-CONSTANT"], .tboxexpression > li.operation > .arg > span[data-token="LOGICAL-CONSTANT"] {
+		border: 1px solid #d2bbaf;
+	}
+	.groupexpression li.exprdefault[data-token="LOGICAL-CONSTANT"] .expr-input-btn {
+		color: #472311;
+		background-color: #d2bbaf;
+	}
+	.groupexpression li.exprdefault[data-token="LOGICAL-CONSTANT"] .expr-input-prefix {
+		color: #0d3e38;
+	}
+	.sample-expr.logical {
+		background: #e9cdbf;
+		border: 1px solid #d2bbaf;
+	}
+	.sample-var.logical {
+    	background-color: #e9cdbf;
+	}
+	.sample-var.logical:before {
+    	border-right: 10px solid #e9cdbf;
+	}
+	.sample-var.logical:after {
+    	border-left: 10px solid #e9cdbf;
+	}
+
+
+	/*VARIABEL*/
+	.groupexpression > li.exprvariable[data-token^="INTEGER-"] span.exprvariable:not(.varempty), .tboxstatement > li[data-arg_type="integer"] span.exprvariable, .tboxexpression > li.variable[data-token^="INTEGER-"] span.exprvariable {
+		background-color: #ecebc2;
+		color: #525010;
+	}
+	.groupexpression > li.exprvariable[data-token^="INTEGER-"] span.exprvariable:not(.varempty):before, .tboxstatement > li[data-arg_type="integer"] span.exprvariable:before, .tboxexpression > li.variable[data-token^="INTEGER-"] span.exprvariable:before {
+		border-right: 10px solid #ecebc2;
+	}
+	.groupexpression > li.exprvariable[data-token^="INTEGER-"] span.exprvariable:not(.varempty):after, .tboxstatement > li[data-arg_type="integer"] span.exprvariable:after, .tboxexpression > li.variable[data-token^="INTEGER-"] span.exprvariable:after {
+		border-left: 10px solid #ecebc2;
+	}
+	#output form span.INTEGER {
+		color: #525010;
+	}
+	.groupexpression > li.exprvariable[data-token^="REAL-"] span.exprvariable, .tboxstatement > li[data-arg_type="real"] span.exprvariable, .tboxexpression > li.variable[data-token^="REAL-"] span.exprvariable {
+		background-color: #c9ecc3;
+		color: #105210;
+	}
+	.groupexpression > li.exprvariable[data-token^="REAL-"] span.exprvariable:before, .tboxstatement > li[data-arg_type="real"] span.exprvariable:before, .tboxexpression > li.variable[data-token^="REAL-"] span.exprvariable:before {
+		border-right: 10px solid #c9ecc3;
+	}
+	.groupexpression > li.exprvariable[data-token^="REAL-"] span.exprvariable:after, .tboxstatement > li[data-arg_type="real"] span.exprvariable:after, .tboxexpression > li.variable[data-token^="REAL-"] span.exprvariable:after {
+		border-left: 10px solid #c9ecc3;
+	}
+	#output form span.REAL {
+		color: #105210;
+	}
+	.groupexpression > li.exprvariable[data-token^="LOGICAL-"] span.exprvariable, .tboxstatement > li[data-arg_type="logical"] span.exprvariable, .tboxexpression > li.variable[data-token^="LOGICAL-"] span.exprvariable {
+		background-color: #e9cdbf;
+		color: #472311;
+	}
+	.groupexpression > li.exprvariable[data-token^="LOGICAL-"] span.exprvariable:before, .tboxstatement > li[data-arg_type="logical"] span.exprvariable:before, .tboxexpression > li.variable[data-token^="LOGICAL-"] span.exprvariable:before {
+		border-right: 10px solid #e9cdbf;
+	}
+	.groupexpression > li.exprvariable[data-token^="LOGICAL-"] span.exprvariable:after, .tboxstatement > li[data-arg_type="logical"] span.exprvariable:after, .tboxexpression > li.variable[data-token^="LOGICAL-"] span.exprvariable:after {
+		border-left: 10px solid #e9cdbf;
+	}
+	#output form span.LOGICAL {
+		color: #472311;
+	}
+	.groupexpression > li.exprvariable[data-token^="STRING-"] span.exprvariable, .tboxstatement > li[data-arg_type="string"] span.exprvariable, .tboxexpression > li.variable[data-token^="STRING-"] span.exprvariable {
+		background-color: #fff;
+		color: #454648;
+	}
+	.groupexpression > .exprvariable[data-token^="STRING-"] span.exprvariable:before, .tboxstatement > li[data-arg_type="string"] span.exprvariable:before, .tboxexpression > li.variable[data-token^="STRING-"] span.exprvariable:before {
+		border-right: 10px solid #fff;
+	}
+	.groupexpression > li.exprvariable[data-token^="STRING-"] span.exprvariable:after, .tboxstatement > li[data-arg_type="string"] span.exprvariable:after, .tboxexpression > li.variable[data-token^="STRING-"] span.exprvariable:after {
+		border-left: 10px solid #fff;
+	}
+	#output form span.LOGICAL {
+		color: #454648;
+	}
+
+	/*VARIABEL LIST*/
+	.groupexpression > li.exprvariable[data-token="INTEGER-ARRAY"] ol {
+		background-color: #ecebc2;
+		color: #525010;
+	}
+	.groupexpression > .exprvariable[data-token="INTEGER-ARRAY"] ol:before {
+		border-right: 10px solid #ecebc2;
+	}
+	.groupexpression > li.exprvariable[data-token="INTEGER-ARRAY"] ol:after {
+		border-left: 10px solid #ecebc2;
+	}
+	.groupexpression > li.exprvariable[data-token="REAL-ARRAY"] ol {
+		background-color: #c9ecc3;
+		color: #105210;
+	}
+	.groupexpression > .exprvariable[data-token="REAL-ARRAY"] ol:before {
+		border-right: 10px solid #c9ecc3;
+	}
+	.groupexpression > li.exprvariable[data-token="REAL-ARRAY"] ol:after {
+		border-left: 10px solid #c9ecc3;
+	}
+	.groupexpression > li.exprvariable[data-token="LOGICAL-ARRAY"] ol {
+		background-color: #e9cdbf;
+		color: #472311;
+	}
+	.groupexpression > .exprvariable[data-token="LOGICAL-ARRAY"] ol:before {
+		border-right: 10px solid #e9cdbf;
+	}
+	.groupexpression > li.exprvariable[data-token="LOGICAL-ARRAY"] ol:after {
+		border-left: 10px solid #e9cdbf;
+	}
+	.groupexpression > li.exprvariable[data-token="STRING-ARRAY"] ol {
+		background-color: #fff;
+		color: #454648;
+	}
+	.groupexpression > .exprvariable[data-token="STRING-ARRAY"] ol:before {
+		border-right: 10px solid #fff;
+	}
+	.groupexpression > li.exprvariable[data-token="STRING-ARRAY"] ol:after {
+		border-left: 10px solid #fff;
+	}
+
+
+	/*OPERATION*/
+	.groupexpression > li[data-token="INTEGER-UNARY-OPERATION"] > ol.operation, .groupexpression > li[data-token="INTEGER-BINARY-OPERATION"] > ol.operation, .groupexpression > li[data-token="INTEGER-TERNARY-OPERATION"] > ol.operation, .tboxexpression > li[data-token="INTEGER-UNARY-OPERATION"] > .arg, .tboxexpression > li[data-token="INTEGER-BINARY-OPERATION"] > .arg, .tboxexpression > li[data-token="INTEGER-TERNARY-OPERATION"] > .arg {
+		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ecebc2), color-stop(100%,#dddaaa)); 
+	}
+	.groupexpression > li[data-token="REAL-UNARY-OPERATION"] > ol.operation, .groupexpression > li[data-token="REAL-BINARY-OPERATION"] > ol.operation, .groupexpression > li[data-token="REAL-TERNARY-OPERATION"] > ol.operation, .tboxexpression > li[data-token="REAL-UNARY-OPERATION"] > .arg, .tboxexpression > li[data-token="REAL-BINARY-OPERATION"] > .arg, .tboxexpression > li[data-token="REAL-TERNARY-OPERATION"] > .arg {
+		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#c9ecc3), color-stop(100%,#baeab2)); 
+	}
+	.groupexpression > li[data-token="LOGICAL-UNARY-OPERATION"] > ol.operation, .groupexpression > li[data-token="LOGICAL-BINARY-OPERATION"] > ol.operation, .groupexpression > li[data-token="LOGICAL-TERNARY-OPERATION"] > ol.operation, .tboxexpression > li[data-token="LOGICAL-UNARY-OPERATION"] > .arg,  .tboxexpression > li[data-token="LOGICAL-BINARY-OPERATION"] > .arg, .tboxexpression > li[data-token="LOGICAL-TERNARY-OPERATION"] > .arg {
+		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#d2bbaf), color-stop(100%,#ceb3a5));
+	}
+	.groupexpression > li[data-token="RELATIONAL-BINARY-OPERATION"] > ol.operation, .tboxexpression > li[data-token="RELATIONAL-BINARY-OPERATION"] > .arg {
+		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#d2bbaf), color-stop(100%,#ceb3a5));
+	}
+
+	/*PLACEHOLDER*/
+	.groupexpression > li.exprdefault.placeholder {
+		background-color: #888;
+		transition: background-color 0.5s;
+	}
+	.groupexpression > li.exprvariable[data-token].placeholder span.exprvariable {
+		transition: background-color 0.5s;
+		background-color: #888;
+	}
+	.groupexpression > li.exprvariable[data-token].placeholder span.exprvariable:before {
+		border-right-color: #888;
+	}
+	.groupexpression > li.exprvariable[data-token].placeholder span.exprvariable:after {
+		border-left-color: #888;
+	}
+	.groupexpression > li.exprvariable[data-token].placeholder ol {
+		background-color: #888;
+	}
+	.groupexpression > li.exprvariable[data-token].placeholder ol:before {
+		border-right-color: #888;
+	}
+	.groupexpression > li.exprvariable[data-token].placeholder ol:after {
+		border-left-color: #888;
+	}
+/*[ENDOF] EKSPRESI*/

@@ -1,0 +1,1578 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <title>FreskKode</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!--BEGIN BOWER PLUGINS-->
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="bower_components/fontawesome/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="bower_components/datatables-bootstrap3/BS3/assets/css/datatables.css">
+  <link rel="stylesheet" type="text/css" href="bower_components/bootstrap-select/dist/css/bootstrap-select.min.css">
+  <!--END BOWER PLUGINS-->
+
+  <link rel="stylesheet" type="text/css" href="assets/global/css/default.css" />
+  <link rel="stylesheet" type="text/css" href="assets/global/css/layout.css" />
+  <link rel="stylesheet" type="text/css" href="assets/global/css/workspace.css" />
+  <link rel="stylesheet" type="text/css" href="assets/global/css/workspace_color.css" />
+  <link rel="stylesheet" type="text/css" href="assets/global/css/tour.css" />
+  <link rel="stylesheet" type="text/css" href="assets/global/css/dialog.css" />
+  <link rel="stylesheet" type="text/css" href="assets/pages/css/home.css" />
+  <link rel="stylesheet" type="text/css" href="assets/pages/css/projects.css" />
+</head>
+<body>
+  <div id="container" class="fullheight">
+    <div class="wrap fullheight display-table">
+      <div class="head-wrap display-table-row">
+        <header class="clearfix">
+          <nav class="col-sm-3 align-left clearfix">
+            <div class="btn-group">
+              <label class="windowControl" id="WindowControlMenu" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-bars"></i></label>
+              <ul class="dropdown-menu" id="main-navigation">
+                <li role="separator" class="divider"></li>
+                <li><a href="#" id="menu_WindowControlClose">Keluar</a></li>
+              </ul>
+            </div>
+
+            <div class="btn-group programmerRating">
+              <a class="btn btn-warning" data-toggle="modal" href="#RatingModal" title="apa ini?">
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star-o"></i>
+                <i class="fa fa-star-o"></i>
+                <i class="fa fa-star-o"></i>
+              </a>
+              <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span class="caret"></span>
+                <span class="sr-only">Toggle Dropdown</span>
+              </button>
+              <span id="scoreplus1" style="display:none;padding-left:10px;font-weight:700;">rr</span>
+              <span id="scoreplus2" style="display:none;padding-left:10px;font-weight:700;">rr</span>
+              <ul class="dropdown-menu">
+                <li class="dropdown-header">Tingkatan Programming : Novice Level <span>0</span></li>
+                <li class="dropdown-header"><b>Skor : <span>0</span></b></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="javascript:window.rating.resetScore()">Reset Skor</a></li>
+              </ul>
+            </div>
+          </nav>
+          <nav class="col-sm-6 align-center clearfix">
+            <h1>
+              <img alt="freshkode" src="assets/global/img/logo.png"/>
+            </h1>
+          </nav>
+          <nav class="right col-sm-3 align-right clearfix">
+            <label class="windowControl page-help disabled no-intro" id="WindowControlActHelp"><i class="fa fa-question-circle" id="cd-inittour-trigger"></i></label>
+            <label class="windowControl" id="WindowControlMinimize"><i class="fa fa-minus-circle"></i></label>
+            <label class="windowControl" id="WindowControlResize"><i class="fa fa-plus-circle"></i></label>
+            <label class="windowControl" id="WindowControlClose"><i class="fa fa-times-circle"></i></label>
+          </nav>
+        </header>
+        <div id="navbar"></div>
+      </div>
+
+      <div id="page" class="display-table-row-expanded"></div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="RatingModal" tabindex="-1" role="dialog" aria-labelledby="RatingModal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="CreateVariableModal">Penilaian Tingkatan Programming</h4>
+          </div>
+          <div class="modal-body">
+            <p>Freshkode akan secara otomatis mengukur kemampuan programmer (pengguna) dalam mengoperasikan bahasa freshkode. Ketika programmer mampu untuk menggunakan fitur ataupun bahasa pada freshkode dengan baik, maka mereka akan diberikan poin. Poin tersebut nantinya akan menentukan tingkatan dari programmer. Tingkatan terbagi 6, yaitu :
+
+              <table class="table">
+                <tr>
+                  <td>
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star"></i>
+                  </td>
+                  <td>Minimum Poin = 1000</td>
+                </tr>
+                <tr>
+                  <td>
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star-o"></i>
+                  </td>
+                  <td>Minimum Poin = 600</td>
+                </tr>
+                <tr>
+                  <td>
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star-o"></i>
+                  <i class="fa fa-star-o"></i>
+                  </td>
+                  <td>Minimum Poin = 400</td>
+                </tr>
+                <tr>
+                  <td>
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star-o"></i>
+                  <i class="fa fa-star-o"></i>
+                  <i class="fa fa-star-o"></i>
+                  </td>
+                  <td>Minimum Poin = 300</td>
+                </tr>
+                <tr>
+                  <td>
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star-o"></i>
+                  <i class="fa fa-star-o"></i>
+                  <i class="fa fa-star-o"></i>
+                  <i class="fa fa-star-o"></i>
+                  </td>
+                  <td>Minimum Poin = 200</td>
+                </tr>
+                <tr>
+                  <td>
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star-o"></i>
+                  <i class="fa fa-star-o"></i>
+                  <i class="fa fa-star-o"></i>
+                  <i class="fa fa-star-o"></i>
+                  <i class="fa fa-star-o"></i>
+                  </td>
+                  <td>Minimum Poin = 100</td>
+                </tr>
+              </table>
+
+              Nilai poin otomatis akan ditambahkan ketika :
+              <ul>
+              <li>Menggunakan Fitur Tur (Nilai Poin 30-90)</li>
+              <li>Menggunakan Bahasa Visual Freshkode (Nilai Poin 0-10)</li>
+              <li>Menyimpan Sebuah Project (Nilai Poin 2)</li>
+              </ul>
+            </p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-info" data-dismiss="modal">Tutup</button>
+          </div>
+        </div>
+    </div>
+  </div>
+
+  <!--BEGIN BOWER PLUGINS-->
+  <script src="bower_components/moment/min/moment.min.js" type="text/javascript"></script>
+  <script src="bower_components/moment/locale/id.js" type="text/javascript"></script>
+  <script type="text/javascript">
+    moment.locale('id-ID');
+  </script>
+  <script src="bower_components/jquery/dist/jquery.min.js" type="text/javascript"></script>
+  <script src="bower_components/underscore/underscore-min.js" type="text/javascript"></script>
+  <script src="bower_components/backbone/backbone.js"></script>
+  <script src="bower_components/backbone.localStorage/backbone.localStorage-min.js"></script>
+
+  <script src="bower_components/bootstrap/dist/js/bootstrap.min.js" type="text/javascript"></script>
+  <script src="bower_components/jquery-sortable/source/js/jquery-sortable.js"></script>
+  <script src="bower_components/interact.js/dist/interact.min.js"></script>
+  <script src="bower_components/datatables/media/js/jquery.dataTables.min.js"></script>
+  <script src="bower_components/datatables-bootstrap3/BS3/assets/js/datatables.js"></script>
+  <script src="bower_components/jQuery-menu-aim/jquery.menu-aim.js"></script>
+  <script src="bower_components/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
+  <script src="bower_components/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.js"></script>
+  <script src="bower_components/html2canvas/build/html2canvas.js"></script>
+
+  <!--END BOWER PLUGINS-->
+
+  <script type="text/template" id="section--navbar">
+    <nav class="header-nav clearfix">
+      <div class="row">
+        <div class="col-sm-3 align-left clearfix">{{= data.leftSection }}</div>
+        <div class="col-sm-6 align-center clearfix">
+          <figure class="text-effect">
+            <figcaption id="pageName">{{= data.centerSection }}</figcaption>
+            <span id="response"></span>
+          </figure>
+        </div>
+        <div class="col-sm-3 align-right clearfix">{{= data.rightSection }}</div>
+      </div>
+    </nav>
+  </script>
+
+  <!--BEGIN OF PAGES-->
+    <!--PAGE INTRO-->
+    <script type="text/template" id="template--intro">
+      <section class="cd-hero">
+        <ul class="cd-hero-slider autoplay">
+          <li class="selected">
+            <div class="cd-full-width">
+              <h2>Code for Freshman</h2>
+              <p>Bahasa pemrgoraman visual yang dirancang untuk dapat meningkatkan kemandirian <i>novice programmer</i> (programmer pada tingkat pemula) untuk menyusun program dengan cara yang menarik, yaitu drag and fit</p>
+              <a href="#/projects" class="cd-btn">Memulai Membuat Program</a>
+              <a data-toggle="modal" href="#CreditsModal"class="cd-btn secondary">Credit</a>
+            </div> <!-- .cd-full-width -->
+          </li>
+
+          <li>
+            <div class="cd-full-width">
+              <h2>Penyusunan Program dengan Drag and Fit</h2>
+              <p>Drag and fit memungkinkan programmer untuk menyusun program freshkode dengan menarik dan meletakkan kode program visual pada tempat yang benar. Penyusunan tersebut membuat penempatan statement dan ekspresi program yang benar.</p>
+            </div> <!-- .cd-half-width -->
+          </li>
+
+          <li>
+            <div class="cd-full-width">
+              <h2>Penyajian Bahasa dengan Simbol Grafis</h2>
+              <p>Programmer tidak perlu mengingat setiap intruksi untuk membangun program freshkode. Selain itu bahasa disajikan dalam bentuk visual (representasi diagram, ikon dan warna) sehingga memudahkan programmer untuk menyusun program.</p>
+            </div> <!-- .cd-half-width -->
+            
+          </li>
+
+          <li>
+            <div class="cd-full-width">
+              <h2>Mengurangi Kesalahan</h2>
+              <p>Selain penyusunan dengan <b>drag and fit</b>, kami merancang bahasa yang fleksibel dan dapat beradaptasi dengan kemungkinan kesalahan sehingga programming dengan freshkode menjadi minim kesalahan penyusunan program.</p>
+            </div> <!-- .cd-half-width -->
+            
+          </li>
+
+          <li class="cd-bg-video">
+            <div class="cd-full-width">
+              <h2>Pemisahan Struktur Variabel dan Logika Utama Program</h2>
+              <p>Penyusunan program freshkode dibagi menjadi 2 bagian, yaitu deklarasi dan program utama. Deklarasi berisi seluruh definisi variabel dan logika utama program. Programmer tentunya akan lebih mudah mengelola variabel.</p>
+            </div> <!-- .cd-full-width -->
+
+            <div class="cd-bg-video-wrapper" data-video="assets/video/video">
+              <!-- video element will be loaded using jQuery -->
+            </div> <!-- .cd-bg-video-wrapper -->
+          </li>
+
+          <li>
+            <div class="cd-full-width">
+              <h2>Fitur Editor dan Manajemen Program</h2>
+              <p>Programmer dapat menyusun, mengeksekusi serta menyimpan program visual freshkode di dalam satu wadah "Lingkungan Pemrograman Visual".</p>
+            </div> <!-- .cd-full-width -->
+          </li>
+
+          <li>
+            <div class="cd-full-width">
+              <h2>Fitur Panduan Terpadu</h2>
+              <p>Fitur panduan yang memberikan informasi dari setiap perintah yang digunakan programmer.</p>
+            </div> <!-- .cd-full-width -->
+          </li>
+        </ul> <!-- .cd-hero-slider -->
+
+        <div class="cd-slider-nav">
+          <nav>
+            <span class="cd-marker item-1"></span>
+            
+            <ul>
+              <li class="selected"><a href="#0"><i class="fkd fkd-logo"></i></a></li>
+              <li><a href="#0"><i class="fa fa-arrows fa-3"></i></a></li>
+              <li><a href="#0"><i class="fa fa-th-large"></i></a></li>
+              <li><a href="#0"><i class="fa fa-check-square-o"></i></a></li>
+              <li><a href="#0"><i class="fa fa-code"></i></a></li>
+              <li><a href="#0"><i class="fa fa-pencil-square"></i></a></li>
+              <li><a href="#0"><i class="fa fa-info-circle"></i></a></li>
+            </ul>
+          </nav> 
+        </div> <!-- .cd-slider-nav -->
+      </section>
+
+      <div class="modal fade" id="CreditsModal" tabindex="-1" role="dialog" aria-labelledby="CreditsModal" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="CreateVariableModal">Freshkode</h4>
+              </div>
+              <div class="modal-body">
+                <p>Freshkode adalah bahasa dan lingkungan pemrgoraman visual yang dibuat selama perlombaan Gemastik 8 UGM. Berikut adalah komponen eksternal yang digunakan Freskode (beserta lisensi yang dimiliki) :
+
+                <ol>
+                <li>Backbone.js & Underscore.js <br/><small>Lisensi : MIT</small></li>
+                <li>Bootstrap <br/><small>Lisensi : MIT</small></li>
+                <li>DataTables <br/><small>Lisensi : MIT</small></li>
+                <li>Font-Awesome <br/><small>Lisensi : SIL OFL 1.1 (Font);  MIT (File CSS, LESS, and Sass);CC BY 3.0 License (Dokumentasi)</small></li>
+                <li>Html2Canvas <br/><small>Lisensi : MIT</small></li>
+                <li>JQuery <br/><small>Lisensi : MIT</small></li>
+                <li>JQuery Sortable <br/><small>Lisensi : MIT</small></li>
+                <li>Moment.js <br/><small>Lisensi : MIT</small></li>
+                <li>Node-Webkit <br/><small>Lisensi : MIT</small></li>
+                <li>Select2.js <br/><small>Lisensi : MIT</small></li>
+                </ol>
+                </p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-info" data-dismiss="modal">Tutup</button>
+              </div>
+            </div>
+        </div>
+      </div>
+    </script>
+
+    <!--PAGE PROJECTLIST-->
+    <script type="text/template" id="template--projectlist">
+      <table class="table table-striped table-bordered table-hover dataTable no-footer" id="datatable_projectlist">
+        <thead>
+        <tr role="row" class="heading">
+          <th width="50%">
+             Nama Program
+          </th>
+          <th width="20%">
+             Tanggal Buat
+          </th>
+          <th width="20%">
+             Terakhir Modifikasi
+          </th>
+        </tr>
+        </thead>
+        <tbody>
+          {{ _.each(data.projects, function(item){ }}
+            <tr data-id="{{= item.get('cid') }}" title="klik kanan untuk melihat opsi program">
+              <td>{{= item.get('name') }}</td>
+              <td>{{= item.getDateCreated() }}</td>
+              <td>{{= item.getDateModified() }}</td>
+            </tr>
+          {{ }); }}
+        </tbody>
+      </table>
+    </div>
+    </script>
+
+    <!--PAGE WORKSPACE-->
+    <script type="text/template" id="template--workspace">
+      <div class="main-wrap clearfix fullheight">
+        <div class="col-sm-12 fullheight">
+        <div class="row fullheight">
+        <div class="row-same-height fullheight">
+
+
+<style>
+  /* -------------------------------- 
+
+  Navigation
+
+  -------------------------------- */
+
+
+
+  .cd-side-navigation {
+    width: 70px;
+    position: relative;
+    height: 100%;
+    z-index: 100;
+  }
+  .cd-side-navigation > ul, 
+  .cd-side-navigation > ul > li {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+  }
+  .cd-side-navigation::before {
+    /* background color of the side navigation */
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: #F5F5F5;
+  }
+  .cd-side-navigation > ul {
+    list-style: none;
+    height: 100%;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .cd-side-navigation > ul > li {
+  }
+  .cd-side-navigation > ul > li > a {
+    display: block;
+    position: relative;
+    padding: 3.2em 0 1.5em;
+    font-size: 12px;
+    font-weight: 700;
+    text-align: center;
+    color: #4a5261;
+    -webkit-transition: background-color 0.2s, color 0.2s;
+    -moz-transition: background-color 0.2s, color 0.2s;
+    transition: background-color 0.2s, color 0.2s;
+  }
+  .cd-side-navigation > ul > li > a span.ico {
+    /* this is the icon */
+    position: absolute;
+    left: 50%;
+    right: auto;
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+    transform: translateX(-50%);
+    top: 1.3em;
+  }
+  .cd-side-navigation:not(.temp-disabled) > ul > li > a:hover {
+    background-color: #FEFEFE;
+  }
+
+  .cd-side-navigation:not(.temp-disabled) > ul > li.hover > a, 
+  .cd-side-navigation > ul > li > a.selected {
+    background-color: #FEFEFE;
+    color: #131519;
+  }
+  .cd-side-navigation a.selected > svg *, .no-touch .cd-side-navigation a.selected:hover > svg * {
+    stroke: #83b0b9;
+  }
+  .cd-side-navigation li:hover svg *,
+  .cd-side-navigation li:nth-of-type(2) .selected:hover > svg * {
+    stroke: #d35657;
+  }
+  .cd-side-navigation li:nth-of-type(3) .selected > svg *,
+  .cd-side-navigation li:nth-of-type(3) .selected:hover > svg * {
+    stroke: #343943;
+  }
+  .cd-side-navigation li:nth-of-type(4) .selected > svg *,
+  .cd-side-navigation li:nth-of-type(4) .selected:hover > svg * {
+    stroke: #e4b162;
+  }
+  .cd-side-navigation li > .tab-pane {
+    position: absolute;
+    top: 0;
+    left: 100%;
+    height: 100%;
+    width: 300px;
+    background-color: rgba(255,255,255,0.95);
+    padding: 1em;
+    visibility: hidden;
+  }
+  .cd-side-navigation:not(.temp-disabled) li.hover > .tab-pane {
+    visibility: visible;
+  }
+  @media only screen and (min-width: 480px) {
+    .cd-side-navigation {
+      width: 94px;
+    }
+    .cd-side-navigation a svg {
+      top: 1.6em;
+    }
+  }
+</style>
+
+  <nav class="cd-side-navigation" class="col-sm-height">
+    <ul>
+      <li>
+        <a href="javascript:void(0)" data-menu="">
+          <span class="ico">
+            <svg width="50" height="20" xmlns="http://www.w3.org/2000/svg">
+             <g>
+              <title>Layer 1</title>
+              <rect id="svg_9" fill="#D40B0B" stroke="black" stroke-width="0.1" height="19.17857" width="45.9" ry="2" rx="2" y="0.46071" x="2.05"/>
+              <path fill="#ffffff" stroke="black" stroke-width="0.1" stroke-linejoin="null" stroke-linecap="null" d="m16.8,9.34227l3.20875,-3.20859l0,1.60422l2.58473,0l0,-4.81297l4.8131,0l0,4.81297l2.58467,0l0,-1.60422l3.20873,3.20859l-3.20873,3.20876l0,-1.60437l-2.58467,0l0,4.81311l-4.8131,0l0,-4.81311l-2.58473,0l0,1.60437l-3.20875,-3.20876z" id="svg_5"/>
+              <text fill="#ffffff" stroke="black" stroke-width="0" stroke-linejoin="null" stroke-linecap="null" x="11.56699" y="14.55392" id="svg_6" font-size="24" font-family="Monospace" text-anchor="middle" xml:space="preserve" transform="matrix(0.6890995502471923,0,0,0.6890995502471923,1.47725111246109,5) ">t</text>
+              <text fill="#ffffff" stroke="black" stroke-width="0" stroke-linejoin="null" stroke-linecap="null" x="57.42394" y="14.84415" font-size="24" font-family="Monospace" text-anchor="middle" xml:space="preserve" transform="matrix(0.6890995502471923,0,0,0.6890995502471923,1.47725111246109,5) " id="svg_7">f</text>
+             </g>
+            </svg>
+          </span>
+          Percabangan
+        </a>
+
+        <div class="tab-pane" id="tb-percabangan">
+          <div id="toolbox_percabangan">
+            <label>statement</label>
+            <ol id="tbox--percabangan" class="tboxstatement"/>
+          </div>
+        </div>
+      </li>
+
+      <li>
+        <a href="javascript:void(0)" data-menu="">
+          <span class="ico">
+            <svg width="50" height="20" xmlns="http://www.w3.org/2000/svg">
+             <g>
+              <title>Layer 1</title>
+              <rect x="5.95" y="0.51071" rx="2" ry="2" width="38.1" height="18.97857" stroke-width="0.1" stroke="black" fill="#d40bd2" id="svg_9"/>
+              <path transform="rotate(90 33.53550338745118,9.457000732421879) " id="svg_1" d="m26.5355,16.457l0,-7.875l0,0c0,-3.3828 2.7423,-6.125 6.125,-6.125l0,0l0,0c1.6245,0 3.1824,0.6453 4.331,1.794c1.1487,1.1486 1.794,2.7065 1.794,4.331l0,0.875l1.75,0l-3.5,3.5l-3.5,-3.5l1.75,0l0,-0.875c0,-1.4498 -1.1752,-2.625 -2.625,-2.625l0,0l0,0c-1.4498,0 -2.625,1.1752 -2.625,2.625l0,7.875l-3.5,0l0,0z" stroke-linecap="null" stroke-linejoin="null" stroke-width="0.1" stroke="black" fill="#ffffff"/>
+              <path id="svg_4" transform="rotate(-90 16.335504531860355,8.756999969482424) " d="m9.33551,15.757l0,-7.87499l0,0c0,-3.38275 2.74225,-6.12501 6.12498,-6.12501l0,0l0,0c1.62447,0 3.18239,0.64533 4.33106,1.79399c1.14864,1.14865 1.79396,2.70657 1.79396,4.33102l0,0.875l1.74999,0l-3.49999,3.5l-3.5,-3.5l1.75,0l0,-0.875c0,-1.44975 -1.17525,-2.62501 -2.62502,-2.62501l0,0l0,0c-1.44973,0 -2.625,1.17526 -2.625,2.62501l0,7.87499l-3.49998,0z" stroke-linecap="null" stroke-linejoin="null" stroke-width="0.1" stroke="black" fill="#ffffff"/>
+             </g>
+            </svg>
+          </span>
+          Perulangan
+        </a>
+
+        <div class="tab-pane" id="tb-perulangan">
+          <div id="toolbox_perulangan">
+            <label>statement</label>
+            <ol id="tbox--perulangan" class="tboxstatement"/>
+          </div>
+        </div>
+      </li>
+
+      <li>
+        <a href="javascript:void(0)" data-menu="">
+          <span class="ico">
+            <svg width="50" height="20" xmlns="http://www.w3.org/2000/svg">
+             <g>
+              <title>Layer 1</title>
+              <g id="svg_3">
+               <path fill="#bfbfbf" stroke-linejoin="null" stroke-linecap="null" d="m49.225,10.1l-10.33104,9.72739l-27.58792,0l-10.33104,-9.72739l10.33104,-9.72739l27.58792,0" id="svg_2"/>
+              </g>
+              <text transform="matrix(0.6338987548618461,0,0,0.6338987548618461,-3.549123738642982,-5.563090498950693) " xml:space="preserve" text-anchor="middle" font-family="Monospace" font-size="24" id="svg_1" y="30.55425" x="45.04515" stroke-linecap="round" stroke-linejoin="bevel" stroke-width="0" stroke="#ffffff" fill="#ffffff">var</text>
+             </g>
+            </svg>
+          </span>
+          Variabel
+        </a>
+
+        <div class="tab-pane" id="tb-variabel">
+          <div id="toolbox_variabel">
+            <label>tambah variabel</label>
+            <div>
+              <button class="btn btn-primary" data-toggle="modal" href="#CreateVarModal">tambah</button>
+            </div>
+            <div id="varlist" class="disabled">
+              <div class="disable-varlist">Klik tombol <button class="btn btn-primary" data-toggle="modal" href="#CreateVarModal">tambah</button> untuk menambahkan variabel</div>
+              <select class="select2-varlist show-menu-arrow" data-live-search="true" data-width="100%"/>
+              <div class="tokens">
+                <label>statement</label>
+                <ol id="tbox--variabel" class="tboxstatement"/>
+                <label>ekspresi</label>
+                <ol id="tbox--variabel" class="tboxexpression"/>
+                <div class="varaction" style="text-align:center;margin-bottom:4px"><button class="btn btn-danger" data-toggle="modal" href="#DeleteVarModal">hapus variabel</button></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </li>
+
+      <li>
+        <a href="javascript:void(0)" data-menu="">
+          <span class="ico">
+            <svg width="60" height="20" xmlns="http://www.w3.org/2000/svg">
+             <g>
+              <title>Layer 1</title>
+              <g id="svg_3">
+               <path fill="#bfbfbf" stroke-linejoin="null" stroke-linecap="null" d="m58.925,10.1l-12.40795,9.72739l-33.13409,0l-12.40795,-9.72739l12.40795,-9.72739l33.13409,0" id="svg_2"/>
+              </g>
+              <text transform="matrix(0.6015428352458301,0,0,0.6015428352458301,0.10168130848167234,-3.9693672281305603) " xml:space="preserve" text-anchor="middle" font-family="Monospace" font-size="24" id="svg_1" y="28.76513" x="36.9715" stroke-linecap="round" stroke-linejoin="bevel" stroke-width="0" stroke="#ffffff" fill="#ffffff">aar</text>
+              <circle fill="#ffffff" stroke="#ffffff" stroke-width="0" cx="43" cy="10.1" r="6.19112" id="svg_4"/>
+              <text transform="matrix(0.375769583993481,0,0,0.375769583993481,17.275286078506518,-0.6198483350508277) " xml:space="preserve" text-anchor="middle" font-family="Monospace" font-size="24" y="34.59329" x="68.56343" stroke-linecap="round" stroke-linejoin="bevel" stroke-width="0" stroke="#ffffff" fill="#000000" id="svg_5">i</text>
+             </g>
+            </svg>
+          </span>
+          Variabel List
+        </a>
+
+        <div class="tab-pane" id="tb-list">
+          <div id="toolbox_list">
+            <label>tambah list</label>
+            <div>
+              <button class="btn btn-primary" data-toggle="modal" href="#CreateArrModal">tambah</button>
+            </div>
+            <div id="varlist" class="disabled">
+              <div class="disable-varlist">Klik tombol <button class="btn btn-primary" data-toggle="modal" href="#CreateArrModal">tambah</button> untuk menambahkan list</div>
+              <select class="select2-arrlist show-menu-arrow" data-live-search="true" data-width="100%"/>
+              <div class="tokens">
+                <label>token</label>
+                <ol id="tbox--list" class="tboxstatement"/>
+                <label>ekspresi</label>
+                <ol id="tbox--list" class="tboxexpression"/>
+                <div class="varaction" style="text-align:center;margin-bottom:4px"><button class="btn btn-danger" data-toggle="modal" href="#DeleteArrModal">hapus list</button></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </li>
+
+      <li>
+        <a href="javascript:void(0)" data-menu="">
+          <span class="ico">
+            <span class="label label-primary">I/O</span>
+          </span>
+          Input/Output
+        </a>
+
+        <div class="tab-pane" id="tb-output">
+          <div id="toolbox_output">
+            <label>statement</label>
+            <ol id="tbox--output" class="tboxstatement"/>
+          </div>
+        </div>
+      </li>
+
+      <li>
+        <a href="javascript:void(0)" data-menu="">
+          <span class="ico">
+            <span class="badge badge-primary">
+              <span class="badge" style="background-color:#fff">&nbsp;</span> +  
+              <span class="badge" style="background-color:#fff">&nbsp;</span>
+            </span>
+          </span>
+          Operasi
+        </a>
+
+        <div class="tab-pane" id="tb-operasi">
+          <div id="toolbox_ekspresi">
+            <label>operasi aritmatika 
+              <select name="operation_type" id="ddopr-type">
+                <option value="0">Integer</option>
+                <option value="1">Real</option>
+              </select>
+            </label>
+
+            <ul class="nav nav-tabs nav-opr-type" style="display:none">
+              <li class="active"><a data-toggle="tab" href="#tabint">Integer</a></li>
+              <li><a data-toggle="tab" href="#tabreal">Real1</a></li>
+            </ul>
+
+            <div class="tab-content navc-opr-type">
+              <div id="tabint" class="tab-pane fade in active">
+                <ol id="tbox--operations" class="tboxexpression aritmetic integer"/>
+              </div>
+              <div id="tabreal" class="tab-pane fade">
+                <ol id="tbox--operations" class="tboxexpression aritmetic real"/>
+              </div>
+            </div>
+            
+            
+            <label>operasi logika (logical)</label>
+            <ol id="tbox--operations" class="tboxexpression logical"/>
+            <label>operasi relasional</label>
+            <ol id="tbox--operations" class="tboxexpression logicalrelational relational"/>
+            <label>operasi string</label>
+            <ol id="tbox--operations" class="tboxexpression string"/>
+          </div>
+        </div>
+      </li>
+
+    </ul>
+  </nav>
+
+
+          <div id="workspace" class="col-xs-7 col-sm-height">
+            <div class="nav-options inverse">
+              <label class="option-toggle" style="text-align:left;">PROGRAM UTAMA</label>
+              <div class="options">
+                <ul>
+                </ul>
+              </div>
+            </div>
+            <div class="pre_startprogram"><ol id="workspace-code" class="startprogram groupstatement"/></div>
+          </div>
+
+          <div id="output" class="col-xs-4 col-sm-height">
+            <div class="nav-options" id="output-menu-ddown" data-title="">
+              <label class="option-toggle">PANDUAN</label>
+              <div class="options">
+                <ul>
+                  <li class="PANDUAN"><a href="#outp-guide" data-toggle="tab">PANDUAN</a></li>
+                  <li class="OUTPUT"><a href="#outp-output" data-toggle="tab">OUTPUT</a></li>
+                  <li class="PESANCOM"><a href="#outp-correction" data-toggle="tab">PESAN COMPILER</a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="tab-content">
+              <div class="tab-pane" id="outp-output">
+                <div class="outp-frame">
+                  <div class="outp-inner"/>
+                </div>
+                <form><span>input</span><input type="text" value="" disabled="disabled" /></form>
+              </div>
+              <div class="tab-pane active" id="outp-guide">
+                <section class="code-guide">
+                  <div id="guide_helper">
+                    <div id="CODEIF" class="code IF">
+                      <h2>PERINTAH: IF</h2>
+                      <img src="assets/global/img/codeguides/IF.png"/>
+                      <p>Perintah ini digunakan untuk satu kondisi saja. Seluruh statement yang berada di dalamnya dijalankan jika kondisi bernilai benar (ekspresi bernilai benar/true/1), jika salah (ekspresi bernilai salah/false/0) maka diabaikan.
+                      </p>
+                      <p class="highlight">Argumen Ekspresi : <i class="diagram-sample sample-expr logical"/> nilai logical</p>
+                      <h4><strong>Nilai Logical</strong></h4>
+                      <img src="assets/global/img/codeguides/LOGICALVALUE.png"/>
+                      <p>
+                        Nilai logical dapat diisi dengan operator relasional, operator logical, variabel logical maupun variabel list logical.
+                      </p>
+                    </div>
+                    <div id="CODEIFELSE" class="code IFELSE">
+                      <h2>PERINTAH: IFELSE</h2>
+                      <img src="assets/global/img/codeguides/IFELSE.png"/>
+                      <p>Perintah ini digunakan saat jika terdapat dua kelompok pernyataan dengan syarat tertentu.
+                      </p>
+                      <p>
+                         Jika kondisi bernilai benar (ekspresi bernilai benar/true/1) maka kelompok statement A akan dijalankan, jika salah (ekspresi bernilai salah/false/0) maka kelompok statement B akan dijalankan.
+                      </p>
+                      <p class="highlight">Argumen Ekspresi : <i class="diagram-sample sample-expr logical"/> nilai logical</p>
+                      <h4><strong>Nilai Logical</strong></h4>
+                      <img src="assets/global/img/codeguides/LOGICALVALUE.png"/>
+                      <p>
+                        Nilai logical dapat diisi dengan operator relasional, operator logical, variabel logical maupun variabel list logical.
+                      </p>
+                    </div>
+                    <div id="CODEITERATION1" class="code ITERATION1">
+                      <h2>PERINTAH: ITERASI1</h2>
+                      <img src="assets/global/img/codeguides/ITERATION1.png"/>
+                      <p>Perintah ini adalah perintah yang melakukan perulangan berdasarkan kondisi yang ditemuinya. Jika kondisi bernilai benar (ekspresi bernilai benar/true/1) maka kelompok statement yang berada di dalamnya akan dijalankan, jika kondisi bernilai salah (ekspresi bernilai salah/false/0) maka kelompok statement yang berada di dalamnya akan diabaikan.
+                      </p>
+                      <p>
+                        Setelah menjalankan kelompok statement, eksekusi akan kembali mengecek kondisi. Selama bernilai benar, maka kelompok statement yang berada di dalamnya akan kembali dijalankan. Hal tersebut berulang hingga kondisi bernilai salah (ekspresi bernilai salah/false/0).
+                      </p>
+                      <p class="highlight">Argumen Ekspresi : <i class="diagram-sample sample-expr logical"/> nilai logical</p>
+                      <h4><strong>Nilai Logical</strong></h4>
+                      <img src="assets/global/img/codeguides/LOGICALVALUE.png"/>
+                      <p>
+                        Nilai logical dapat diisi dengan operator relasional, operator logical, variabel logical maupun variabel list logical.
+                      </p>
+                    </div>
+                    <div id="CODEITERATION2" class="code ITERATION2">
+                      <h2>PERINTAH: ITERASI2</h2>
+                      <img src="assets/global/img/codeguides/ITERATION2.png"/>
+                      <p>Perintah ini adalah perintah yang melakukan perulangan berdasarkan rentang nilai yang diberikan. Rentang nilai yang diberikan bersifat inklusif ([mulai,Iakhir]) yang berarti rentang nilai [0,0] akan menghasilkan 1x perulangan.
+                      </p>
+                      <img src="assets/global/img/codeguides/INTEGER_VAR.png"/>
+                      <p>
+                        Perintah ini juga dapat didefinisikan variabel iterator (variabel harus bertipe integer) yang berguna untuk menyimpan perubahan pada setiap nilai iterasi.
+                      </p>
+                      <p class="highlight">Argumen Ekspresi : <i class="diagram-sample sample-var integer">&nbsp;</i> variabel integer, <i class="diagram-sample sample-expr integer"/> nilai integer, <i class="diagram-sample sample-expr integer"/> nilai integer</p>
+                      <h4><strong>Nilai Integer</strong></h4>
+                      <img src="assets/global/img/codeguides/INTEGERVALUE.png"/>
+                      <p>
+                        Nilai integer dapat diisi dengan operasi aritmatika, variabel integer maupun variabel list integer.
+                      </p>
+                    </div>
+                    <div id="CODEITERATION3" class="code ITERATION3">
+                      <h2>PERINTAH: ITERASI3</h2>
+                      <img src="assets/global/img/codeguides/ITERATION3_0.png"/>
+                      <p>Perintah ini sama seperti ITERASI2 yang melakukan perulangan berdasarkan rentang nilai yang diberikan. Pembedanya adalah dengan terdapatnya jumlah langkah (step) dalam melaakukan perulangan.
+                      </p>
+                      <img src="assets/global/img/codeguides/ITERATION3_1.png"/>
+                      <p>Pembedanya adalah dengan terdapatnya jumlah langkah (step) dalam melakukan perulangan.
+                      </p>
+                      <p class="highlight">Argumen Ekspresi : <i class="diagram-sample sample-var integer">&nbsp;</i> variabel integer, <i class="diagram-sample sample-expr integer"/> nilai integer, <i class="diagram-sample sample-expr integer"/> nilai integer, <i class="diagram-sample sample-expr integer"/> nilai integer</p>
+                      <h4><strong>Nilai Integer</strong></h4>
+                      <img src="assets/global/img/codeguides/INTEGERVALUE.png"/>
+                      <p>
+                        Nilai integer dapat diisi dengan operasi aritmatika, variabel integer maupun variabel list integer.
+                      </p>
+                    </div>
+                    <div id="CODESETVAR" class="code SETVAR">
+                      <h2>PERINTAH: SET VARIABEL</h2>
+                      <img src="assets/global/img/codeguides/SETVAR.png"/>
+                      <p>Perintah ini berguna untuk memberikan nilai pada suatu variabel.
+                      </p>
+                      <p class="highlight">Argumen Ekspresi : <i class="diagram-sample sample-expr integer"/> / <i class="diagram-sample sample-expr real"/> / <i class="diagram-sample sample-expr logical"/>  / <i class="diagram-sample sample-expr string"/> tergantung tipe data pada variabel</p>
+                    </div>
+                    <div id="CODEINCRVAR" class="code INCRVAR">
+                      <h2>PERINTAH: INCREMENT VARIABEL</h2>
+                      <img src="assets/global/img/codeguides/INCRVAR.png"/>
+                      <p>Perintah ini berguna untuk menambahkan nilai pada suatu variabel.
+                      </p>
+                      <p>Argumen Ekspresi : <i class="diagram-sample sample-expr integer"/> / <i class="diagram-sample sample-expr real"/> tergantung tipe data pada variabel</p>
+                    </div>
+                    <div id="CODEDECRVAR" class="code DECRVAR">
+                      <h2>PERINTAH: DECREMENT VARIABEL</h2>
+                      <img src="assets/global/img/codeguides/DECRVAR.png"/>
+                      <p>Perintah ini berguna untuk mengurangi nilai pada suatu variabel.
+                      </p>
+                      <p class="highlight">Argumen Ekspresi : <i class="diagram-sample sample-expr integer"/> / <i class="diagram-sample sample-expr real"/> tergantung tipe data pada variabel</p>
+                    </div>
+                    <div id="CODESETARRVAR" class="code SETARRVAR">
+                      <h2>PERINTAH: SET VARIABEL LIST</h2>
+                      <img src="assets/global/img/codeguides/SETARRVAR.png"/>
+                      <p>Perintah ini berguna untuk memberikan nilai pada suatu variabel list.
+                      </p>
+                      <p class="highlight">Argumen Ekspresi : <i class="diagram-sample sample-expr integer"/> / <i class="diagram-sample sample-expr real"/> / <i class="diagram-sample sample-expr logical"/>  / <i class="diagram-sample sample-expr string"/> tergantung tipe data pada variabel</p>
+                    </div>
+                    <div id="CODEINCRARRVAR" class="code INCRARRVAR">
+                      <h2>PERINTAH: INCREMENT VARIABEL LIST</h2>
+                      <img src="assets/global/img/codeguides/INCRARRVAR.png"/>
+                      <p>Perintah ini berguna untuk menambahkan nilai pada suatu variabel list.
+                      </p>
+                      <p class="highlight">Argumen Ekspresi : <i class="diagram-sample sample-expr integer"/> / <i class="diagram-sample sample-expr real"/> tergantung tipe data pada variabel</p>
+                    </div>
+                    <div id="CODEDECRARRVAR" class="code DECRARRVAR">
+                      <h2>PERINTAH: DECREMENT VARIABEL LIST</h2>
+                      <p>Ekspresi : <i/> tergantung tipe data</p>
+                      <img src="assets/global/img/codeguides/DECRARRVAR.png"/>
+                      <p>Perintah ini berguna untuk mengurangi nilai pada suatu variabel list.
+                      </p>
+                      <p class="highlight">Argumen Ekspresi : <i class="diagram-sample sample-expr integer"/> / <i class="diagram-sample sample-expr real"/> tergantung tipe data pada variabel</p>
+                    </div>
+                    <div id="CODEPRINT" class="code PRINT">
+                      <h2>PERINTAH: PRINT</h2>
+                      <img src="assets/global/img/codeguides/PRINT.png"/>
+                      <p>Perintah ini berguna untuk memberikan output. Perintah ini diisi dengan nilai string yang dapat diisi dengan seluruh tipe data yang ada.
+                      </p>
+                      <p class="highlight">Argumen Ekspresi : <i class="diagram-sample sample-expr string"/> nilai string</p>
+                      <h4><strong>Nilai String</strong></h4>
+                      <img src="assets/global/img/codeguides/STRINGVALUE.png"/>
+                      <p>
+                        Nilai logical dapat diisi dengan semua jenis tipe data. Artinya dapat diisi dengan semua jenis operator dan variabel.
+                      </p>
+                    </div>
+                    <div id="PRINTLINE" class="code PRINTLINE">
+                      <h2>PERINTAH: PRINT</h2>
+                      <img src="assets/global/img/codeguides/PRINTLINE.png"/>
+                      <p>Perintah ini berguna untuk memberikan output. Perintah ini diisi dengan nilai string yang dapat diisi dengan seluruh tipe data yang ada.
+                      </p>
+                      <p class="highlight">Argumen Ekspresi : <i class="diagram-sample sample-expr string"/> nilai string</p>
+                      <h4><strong>Nilai String</strong></h4>
+                      <img src="assets/global/img/codeguides/STRINGVALUE.png"/>
+                      <p>
+                        Nilai logical dapat diisi dengan semua jenis tipe data. Artinya dapat diisi dengan semua jenis operator dan variabel.
+                      </p>
+                    </div>
+                    <div id="CODEINPUT" class="code INPUT">
+                      <h2>PERINTAH: PRINT</h2>
+                      <img src="assets/global/img/codeguides/INPUT.png"/>
+                      <p>Perintah ini berguna untuk membaca masukan (input) dari pengguna. Input yang dimasukkan pengguna akan disimpan pada variabel yang telah didefinisikan pada perintah ini.
+                      </p>
+                      <p class="highlight">Argumen : Variabel <i class="diagram-sample sample-var integer">&nbsp;</i> / <i class="diagram-sample sample-var real">&nbsp;</i> / <i class="diagram-sample sample-var logical">&nbsp;</i>  / <i class="diagram-sample sample-var string">&nbsp;</i>. Menerima semua jenis variabel.</p>
+                    </div>
+                    <div id="INTEGER-BINARY-OPERATION" class="code INTEGER-BINARY-OPERATION">
+                      <h2>PERINTAH: OPERASI INTEGER</h2>
+                      <img src="assets/global/img/codeguides/INTEGER-BINARY-OPERATION.png"/>
+                      <p>Operasi aritmatika penambahan yang tipe data integer.
+                      </p>
+                      <p class="highlight">Ekspresi : <i class="diagram-sample sample-expr integer"/> nilai integer</p>
+                      <h4><strong>Nilai Integer</strong></h4>
+                      <img src="assets/global/img/codeguides/INTEGERVALUE.png"/>
+                      <p>
+                        Nilai integer dapat diisi dengan operasi aritmatika, variabel integer maupun variabel list integer.
+                      </p>
+                    </div>
+                    <div id="INTEGER-TERNARY-OPERATION" class="code INTEGER-TERNARY-OPERATION">
+                      <h2>PERINTAH: OPERASI INTEGER</h2>
+                      <img src="assets/global/img/codeguides/INTEGER-BINARY-OPERATION.png"/>
+                      <p>Operasi aritmatika penambahan yang tipe data integer.
+                      </p>
+                      <p class="highlight">Ekspresi : <i class="diagram-sample sample-expr integer"/> nilai integer</p>
+                      <h4><strong>Nilai Integer</strong></h4>
+                      <img src="assets/global/img/codeguides/INTEGERVALUE.png"/>
+                      <p>
+                        Nilai integer dapat diisi dengan operasi aritmatika, variabel integer maupun variabel list integer.
+                      </p>
+                    </div>
+                    <div id="REAL-BINARY-OPERATION" class="code REAL-BINARY-OPERATION">
+                      <h2>PERINTAH: OPERASI REAL</h2>
+                      <img src="assets/global/img/codeguides/REAL-BINARY-OPERATION.png"/>
+                      <p>Operasi aritmatika penambahan yang tipe data real.
+                      </p>
+                      <p class="highlight">Ekspresi : <i class="diagram-sample sample-expr real"/> nilai real</p>
+                      <h4><strong>Nilai Real</strong></h4>
+                      <img src="assets/global/img/codeguides/REALVALUE.png"/>
+                      <p>
+                        Nilai real dapat diisi dengan operasi aritmatika (real), variabel real maupun variabel list real.
+                      </p>
+                    </div>
+                    <div id="REAL-TERNARY-OPERATION" class="code REAL-TERNARY-OPERATION">
+                      <h2>PERINTAH: OPERASI REAL</h2>
+                      <img src="assets/global/img/codeguides/REAL-BINARY-OPERATION.png"/>
+                      <p>Operasi aritmatika penambahan yang tipe data real.
+                      </p>
+                      <p class="highlight">Ekspresi : <i class="diagram-sample sample-expr real"/> nilai real</p>
+                      <h4><strong>Nilai Real</strong></h4>
+                      <img src="assets/global/img/codeguides/REALVALUE.png"/>
+                      <p>
+                        Nilai real dapat diisi dengan operasi aritmatika (real), variabel real maupun variabel list real.
+                      </p>
+                    </div>
+                    <div id="LOGICAL-BINARY-OPERATION" class="code LOGICAL-BINARY-OPERATION">
+                      <h2>PERINTAH: OPERASI LOGICAL</h2>
+                      <img src="assets/global/img/codeguides/LOGICAL-BINARY-OPERATION.png"/>
+                      <p>Operasi aritmatika penambahan yang tipe data logical.
+                      </p>
+                      <p class="highlight">Ekspresi : <i class="diagram-sample sample-expr logical"/> nilai logical</p>
+                      <h4><strong>Nilai Logical</strong></h4>
+                      <img src="assets/global/img/codeguides/LOGICALVALUE.png"/>
+                      <p>
+                        Nilai logical dapat diisi dengan operator relasional, operator logical, variabel logical maupun variabel list logical.
+                      </p>
+                    </div>
+                    <div id="LOGICAL-TERNARY-OPERATION" class="code LOGICAL-TERNARY-OPERATION">
+                      <h2>PERINTAH: OPERASI LOGICAL</h2>
+                      <img src="assets/global/img/codeguides/LOGICAL-BINARY-OPERATION.png"/>
+                      <p>Operasi logical digunakan untuk membuat pernyaataan logika.
+                      </p>
+                      <p class="highlight">Ekspresi : <i class="diagram-sample sample-expr logical"/> nilai logical</p>
+                      <h4><strong>Nilai Logical</strong></h4>
+                      <img src="assets/global/img/codeguides/LOGICALVALUE.png"/>
+                      <p>
+                        Nilai logical dapat diisi dengan operator relasional, operator logical, variabel logical maupun variabel list logical.
+                      </p>
+                    </div>
+                    <div id="RELATIONAL-BINARY-OPERATION" class="code RELATIONAL-BINARY-OPERATION">
+                      <h2>PERINTAH: OPERASI RELASIONAL</h2>
+                      <img src="assets/global/img/codeguides/LOGICAL-BINARY-OPERATION.png"/>
+                      <p>Operasi relasional dapat digunakan untuk membandingkan 2 buah nilai.
+                      </p>
+                      <p class="highlight">Ekspresi : <i class="diagram-sample sample-expr logical"/> nilai logical</p>
+                      <h4><strong>Nilai Logical</strong></h4>
+                      <img src="assets/global/img/codeguides/LOGICALVALUE.png"/>
+                      <p>
+                        Nilai logical dapat diisi dengan operator relasional, operator logical, variabel logical maupun variabel list logical.
+                      </p>
+                    </div>
+                    <div id="STRING-BINARY-OPERATION" class="code STRING-BINARY-OPERATION">
+                      <h2>PERINTAH: OPERASI STRING</h2>
+                      <img src="assets/global/img/codeguides/STRING-BINARY-OPERATION.png"/>
+                      <p>Operasi aritmatika penambahan yang tipe data string.
+                      </p>
+                      <p class="highlight">Ekspresi : <i class="diagram-sample sample-expr string"/> nilai string</p>
+                    </div>
+                  </div>
+
+                  <div><img style="width:100%"/></div>
+                  <p/>
+                </section>
+              </div>
+              <div class="tab-pane" id="outp-correction">
+                <section class="code-correction"></section>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+        </div>
+
+        <section class="loading-anim fullheight">
+          <ul class="circles">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+          </ul>
+        </section>
+
+      </div>
+      <!-- Tour Dialog -->
+        <ul class="cd-tour-wrapper" id="basic-operation" data-wrapperid="basic-operation" data-text="Memulai Menggunakan Freshkode">
+          <li class="cd-single-step" style="top:75px;right:27%;" data-condition="keyup" data-selector=".form-control.view-programName">
+            <span>&nbsp;</span>
+
+            <div class="cd-more-info bottom">
+              <h2>Langkah Pertama</h2>
+              <p>Beri Nama Program</p>
+            </div>
+          </li> <!-- .cd-single-step -->
+
+          <li class="cd-single-step" style="top:420px;left:90px;" data-condition="mousedown" data-selector="#tbox--output.tboxstatement > li:eq(1)">
+            <span>&nbsp;</span>
+
+            <div class="cd-more-info right">
+              <h2>&nbsp;</h2>
+              <p>Arahkan kursor pada jenis perintah <b>input/output</b>, lalu tarik perintah <b>cetak</b>.<img src="assets/global/img/codeguides/PRINT.png"/>
+              </p>
+            </div>
+          </li> <!-- .cd-single-step -->
+
+          <li class="cd-single-step" style="top:175px;left:45.5%;" data-condition="disabled" data-selector="">
+            <span>&nbsp;</span>
+
+            <div class="cd-more-info right">
+              <h2>&nbsp;</h2>
+              <img src="images/demo/01-step-4.png" alt="01 step 4">
+              <p>Letakkan pada <b>Program Utama</b>. Lalu tekan <b>next</b> pada demo</p>
+            </div>
+          </li> <!-- .cd-single-step -->
+
+          <li class="cd-single-step" style="top:140px;right:31%" data-condition="disabled" data-selector="">
+            <span>&nbsp;</span>
+
+            <div class="cd-more-info left">
+              <h2>&nbsp;</h2>
+              <p>Penjelasan perintah yang ditarik sebelumnya terdapat pada toolbox PANDUAN.</p>
+              <p>Tekan <b>selanjutnya</b> untuk melanjutkan tur.</p>
+            </div>
+          </li> <!-- .cd-single-step -->
+
+          <li class="cd-single-step" style="top:199px;right:85%;" data-condition="disabled" data-selector="">
+            <span>&nbsp;</span>
+
+            <div class="cd-more-info bottom">
+              <h2>&nbsp;</h2>
+              <img src="images/demo/01-step-5.png" alt="01 step 5">
+              <p>Untuk memilih (<i>selection</i>) atau menarik perintah, letakkan/hover kursor pada nama perintah, selanjutnya akan terlihat ikon yang dapat diklik atau digeser.</p>
+              <p>Tekan <b>selanjutnya</b> untuk melanjutkan tur.</p>
+            </div>
+          </li> <!-- .cd-single-step -->
+
+          <li class="cd-single-step" style="top:85px;left:21%;" data-condition="disabled" data-selector="">
+            <span>&nbsp;</span>
+
+            <div class="cd-more-info bottom">
+              <h2>&nbsp;</h2>
+              <p>Perintah yang sudah dipilih (diseleksi) dapat terlihat di area ini. Klik pada area tersebut untuk melihat opsi untuk perintah yang telah dipilih.</p>
+              <p>Tekan <b>selanjutnya</b> untuk melanjutkan tur.</p>
+            </div>
+          </li> <!-- .cd-single-step -->
+
+          <li class="cd-single-step" style="top:187px;right:80%;" data-condition="click" data-selector=".statement.output input:eq(0)">
+            <span>&nbsp;</span>
+
+            <div class="cd-more-info bottom">
+              <h2>&nbsp;</h2>
+              <img src="images/demo/step-4.png" alt="step 5">
+              <p>Klik pada Argumen Ekspresi untuk merubah nilai.</p>
+            </div>
+          </li> <!-- .cd-single-step -->
+
+          <li class="cd-single-step" style="top:75px;left:93.1%;" data-condition="click" data-selector="#navbar > nav > .row > div:eq(2) > span">
+            <span>&nbsp;</span>
+
+            <div class="cd-more-info left">
+              <h2>&nbsp;</h2>
+              <p>Jalankan Program.</p>
+            </div>
+          </li> <!-- .cd-single-step -->
+
+          <li class="cd-single-step" style="top:75px;left:87.1%;" data-condition="click" data-selector="#navbar > nav > .row > div:eq(2) > button:eq(1)">
+            <span>&nbsp;</span>
+
+            <div class="cd-more-info left">
+              <h2>&nbsp;</h2>
+              <p>Simpan hasil pekerjaan Anda.</p>
+            </div>
+          </li> <!-- .cd-single-step -->
+        </ul>
+        <ul class="cd-tour-wrapper" id="using-variable" data-wrapperid="using-variable" data-text="Menggunakan Variabel">
+          <li class="cd-single-step" style="top:270px;left:90px;" data-condition="submit" data-selector="#CreateVarModal #variableCreation">
+            <span>Langkah Pertama</span>
+
+            <div class="cd-more-info right">
+              <h2>Langkah Pertama</h2>
+              <p>Arahkan kursor pada jenis Perintah <b>variabel</b>, lalu pilih tombol <b>tambah</b> untuk menambahkan variabel. <img src="images/demo/tambahvariabel.png"/>Isi form dari dialog yang ditampilkan.</p>
+            </div>
+          </li> <!-- .cd-single-step -->
+
+          <li class="cd-single-step" style="top:270px;left:90px;" data-condition="disabled" data-selector="">
+            <span>&nbsp;</span>
+
+            <div class="cd-more-info right">
+              <h2>&nbsp;</h2>
+              <p>Klik dropdown untuk melihat daftar variabel yang telah dibuat. Pada gambar di bawah, variabel yang dipilih adalah variabel dengan nama <b>Variabel Baru</b><img src="images/demo/daftarvariabel.png"/></p>
+              <p>Terdapat pula statement dan ekspresi yang berhubungan dengan variabel yang dipilih. <img src="assets/global/img/codeguides/SETVAR.png"/></p>
+              <p>Tekan <b>selanjutnya</b> untuk melanjutkan tur.</p>
+            </div>
+          </li> <!-- .cd-single-step -->
+
+          <li class="cd-single-step" style="top:270px;left:90px;" data-condition="mousedown" data-selector="#tb-variabel .tboxstatement > li:eq(0)">
+            <span>&nbsp;</span>
+
+            <div class="cd-more-info right">
+              <h2>&nbsp;</h2>
+              <p>Tarik perintah <b>Set Variabel</b> <img src="assets/global/img/codeguides/SETVAR.png"/></p>
+            </div>
+          </li> <!-- .cd-single-step -->
+
+          <li class="cd-single-step" style="top:175px;left:45.5%;" data-condition="disabled" data-selector="">
+            <span>&nbsp;</span>
+
+            <div class="cd-more-info top">
+              <h2>&nbsp;</h2>
+              <p>Letakkan pada <b>Program Utama</b></p>
+              <p>Tekan <b>selanjutnya</b> untuk melanjutkan tur.</p>
+            </div>
+          </li> <!-- .cd-single-step -->
+
+          <li class="cd-single-step" style="top:420px;left:90px;" data-condition="mousedown" data-selector="#tb-output .tboxstatement > li:eq(1)">
+            <span>&nbsp;</span>
+
+            <div class="cd-more-info right">
+              <h2>&nbsp;</h2>
+              <p>Arahkan kursor pada jenis perintah <b>input/output</b>, lalu tarik perintah <b>cetak</b>.<img src="assets/global/img/codeguides/PRINT.png"/>
+              </p>
+            </div>
+          </li> <!-- .cd-single-step -->
+
+          <li class="cd-single-step" style="top:215px;left:45%;" data-condition="disabled" data-selector="">
+            <span>&nbsp;</span>
+
+            <div class="cd-more-info top">
+              <h2>&nbsp;</h2>
+              <p>Letakkan pada <b>Program Utama</b> persis di bawah perintah <b>Set Variabel</b>.</p>
+              <p>Tekan <b>selanjutnya</b> untuk melanjutkan tur.</p>
+            </div>
+          </li> <!-- .cd-single-step -->
+
+          <li class="cd-single-step" style="top:270px;left:90px;" data-condition="mousedown" data-selector="#tb-variabel .tboxexpression > li:eq(0)">
+            <span>&nbsp;</span>
+
+            <div class="cd-more-info right">
+              <h2>&nbsp;</h2>
+              <p>Tarik perintah ekspresi <b>Variabel</b></p>
+            </div>
+          </li> <!-- .cd-single-step -->
+
+          <li class="cd-single-step" style="top:220px;right:80%;" data-condition="mouseup" data-selector="#tb-variabel .tboxexpression > li:eq(0)">
+            <span>&nbsp;</span>
+
+            <div class="cd-more-info right">
+              <h2>&nbsp;</h2>
+              <p>Letakkan pada Argumen Ekspresi pada Diagram "CETAK"</p>
+            </div>
+          </li> <!-- .cd-single-step -->
+
+          <li class="cd-single-step" style="top:75px;left:93.1%;" data-condition="click" data-selector="#navbar > nav > .row > div:eq(2) > span">
+            <span>&nbsp;</span>
+
+            <div class="cd-more-info left">
+              <h2>&nbsp;</h2>
+              <p>Jalankan Program.</p>
+            </div>
+          </li> <!-- .cd-single-step -->
+        </ul>
+        <ul class="cd-tour-wrapper" id="using-operator" data-wrapperid="using-operator" data-text="Menggunakan Operasi">
+          <li class="cd-single-step" style="top:420px;left:90px;" data-condition="mousedown" data-selector="#tbox--output.tboxstatement > li:eq(1)">
+            <span>&nbsp;</span>
+
+            <div class="cd-more-info right">
+              <h2>&nbsp;</h2>
+              <p>Arahkan kursor pada jenis perintah <b>input/output</b>, lalu tarik perintah <b>cetak</b>.<img src="assets/global/img/codeguides/PRINT.png"/>
+              </p>
+            </div>
+          </li> <!-- .cd-single-step -->
+
+          <li class="cd-single-step" style="top:175px;left:45.5%;" data-condition="disabled" data-selector="">
+            <span>&nbsp;</span>
+
+            <div class="cd-more-info right">
+              <h2>&nbsp;</h2>
+              <img src="images/demo/01-step-4.png" alt="01 step 4">
+              <p>Letakkan pada <b>Program Utama</b>.</p>
+              <p>Tekan <b>selanjutnya</b> untuk melanjutkan tur.</p>
+            </div>
+          </li> <!-- .cd-single-step -->
+
+          <li class="cd-single-step" style="top:490px;left:90px;" data-condition="mousedown" data-selector="#tbox--operations.tboxexpression > li:eq(0)">
+            <span>&nbsp;</span>
+
+            <div class="cd-more-info right">
+              <h2>&nbsp;</h2>
+              <p>Arahkan kursor pada jenis perintah <b>Operasi</b>, lalu tarik perintah <b>Operasi Aritmatika</b>. <img src="images/demo/operasiIntegerBoolean.png"/></p>
+            </div>
+          </li> <!-- .cd-single-step -->
+
+<!-- contextmenu -->
+          <li class="cd-single-step" style="top:203px;right:80%;" data-condition="disabled" data-selector=".groupexpression .expr">
+            <span>&nbsp;</span>
+
+            <div class="cd-more-info bottom">
+              <h2>&nbsp;</h2>
+              <img src="images/demo/step-4.png" alt="step 8">
+              <p>Letakkan di PROGRAM UTAMA dan ubah nilai pada operasi dengan klik.</p>
+            </div>
+          </li> <!-- .cd-single-step -->
+
+          <li class="cd-single-step" style="top:203px;right:80%;" data-condition="disabled" data-selector="">
+            <span>&nbsp;</span>
+
+            <div class="cd-more-info bottom">
+              <h2>&nbsp;</h2>
+              <p>
+                Setiap perintah ekspresi (baik operasi maupun variabel) memiliki tipe data tersendiri dan dibedakan berdasarkan warna.<br/><br/>
+                  <i class="diagram-sample sample-expr integer"/> Integer<br/>
+                  <i class="diagram-sample sample-expr real"/> Real (Float/Pecahan)<br/>
+                  <i class="diagram-sample sample-expr logical"/> Logical (Boolean)<br/>
+                  <i class="diagram-sample sample-expr string"/> String<br/>
+              </p>
+            </div>
+          </li> <!-- .cd-single-step -->
+
+          <li class="cd-single-step" style="top:203px;right:80%;" data-condition="disabled" data-selector="">
+            <span>&nbsp;</span>
+
+            <div class="cd-more-info bottom">
+              <h2>&nbsp;</h2>
+              <img src="images/demo/step-7.png" alt="step 7">
+              <p>
+                Cara mudah menggunakannya: Letakkan ekspresi pada argumen statement yang memiliki warna yang sama.
+                Khusus untuk string, Anda dapat menaruh tipe data apapun pada argumen yang bernilai string.
+              </p>
+            </div>
+          </li> <!-- .cd-single-step -->
+
+          <li class="cd-single-step" style="top:75px;left:93.1%;" data-condition="click" data-selector=".btn.action-run">
+            <span>&nbsp;</span>
+
+            <div class="cd-more-info left">
+              <h2>&nbsp;</h2>
+              <p>Jalankan Program.</p>
+            </div>
+          </li> <!-- .cd-single-step -->
+        </ul>
+        <ul class="cd-tour-wrapper" id="using-condition" data-wrapperid="using-condition" data-text="Membuat Program Percabangan">
+          <li class="cd-single-step" style="top:125px;left:90px;" data-condition="mousedown" data-selector="#tb-percabangan .tboxstatement > li:eq(0)">
+            <span>&nbsp;</span>
+
+            <div class="cd-more-info right">
+              <h2>&nbsp;</h2>
+              <p>Arahkan kursor pada jenis perintah <b>Percabangan</b>, lalu tarik perintah <b>If</b>. <img src="images/demo/if.png" alt="step 8"></p>
+            </div>
+          </li> <!-- .cd-single-step -->
+
+          <li class="cd-single-step" style="top:178px;left:38.5%;" data-condition="disabled" data-selector="">
+            <span>&nbsp;</span>
+
+            <div class="cd-more-info right">
+              <h2>&nbsp;</h2>
+              <p>Letakkan pada <b>Program Utama</b>.</p> 
+              <p>Argumen pada perintah IF berisi nilai logical (himpunan nilai {0,1}) dan dapat diisi dengan operasi relasional untuk membuat kondisi yang membuat statement di dalamnya dijalankan atau tidak dijalankan.</p>
+              <p>Untuk melanjutkan ke tahap selanjutnya, tekan <b>next</b>.</p>
+            </div>
+          </li> <!-- .cd-single-step -->
+
+          <li class="cd-single-step" style="top:490px;left:90px;" data-condition="mousedown" data-selector="#tbox--operations.tboxexpression.relational > li:eq(0)">
+            <span>&nbsp;</span>
+
+            <div class="cd-more-info right">
+              <h2>&nbsp;</h2>
+              <p>Arahkan kursor pada jenis perintah <b>Operasi</b>, lalu tarik perintah <b>Operasi Relasional</b>. <img src="images/demo/operasiLogicalBoolean.png"/></p>
+            </div>
+          </li> <!-- .cd-single-step -->
+
+          <li class="cd-single-step" style="top:200px;left:18.3%;" data-condition="disabled" data-selector="">
+            <span>&nbsp;</span>
+
+            <div class="cd-more-info bottom">
+              <h2>&nbsp;</h2>
+              <p>Letakkan "operasi relasional" pada argumen perintah IF. Operasi relasional berguna untuk membandingkan dua buah nilai yang diisikannya.</p>
+              <p>Untuk melanjutkan ke tahap selanjutnya, tekan <b>next</b>.</p>
+            </div>
+          </li> <!-- .cd-single-step -->
+
+          <li class="cd-single-step" style="top:169px;left:18.3%;" data-condition="contextmenu" data-selector="#workspace ol li:eq(0) ol li ol li:eq(2) span">
+            <span>&nbsp;</span>
+
+            <div class="cd-more-info top">
+              <h2>&nbsp;</h2>
+              <p>Klik kanan (<i>right click</i>) pada simbol operator ("==") untuk merubah operator.</p>
+            </div>
+          </li> <!-- .cd-single-step -->
+
+          <li class="cd-single-step" style="top:169px;left:18.3%;" data-condition="disabled" data-selector="">
+            <span>&nbsp;</span>
+
+            <div class="cd-more-info top">
+              <h2>&nbsp;</h2>
+              <p>Lalu pilih operasi simbol "Lebih Dari" (">").</p>
+            </div>
+          </li> <!-- .cd-single-step -->
+
+          <li class="cd-single-step" style="top:169px;left:18.3%;" data-condition="disabled" data-selector="">
+            <span>&nbsp;</span>
+
+            <div class="cd-more-info top">
+              <h2>&nbsp;</h2>
+              <p>Kembali klik kanan (<i>right click</i>) pada simbol operator (">") dan pilih "Ganti Tipe Data". Lalu pilih "Integer".</p>
+            </div>
+          </li> <!-- .cd-single-step -->
+
+          <li class="cd-single-step" style="top:169px;left:18.3%;" data-condition="disabled" data-selector="">
+            <span>&nbsp;</span>
+
+            <div class="cd-more-info top">
+              <h2>&nbsp;</h2>
+              <p>Isikan nilai 1 (satu) pada operand bagian kiri dan 2 (dua) pada operand bagian kanan.</p>
+              <p>Setelah itu, tekan <b>next</b>.</p>
+            </div>
+          </li> <!-- .cd-single-step -->
+
+          <li class="cd-single-step" style="top:420px;left:90px;" data-condition="mousedown" data-selector="#tbox--output.tboxstatement > li:eq(1)">
+            <span>&nbsp;</span>
+
+            <div class="cd-more-info right">
+              <h2>&nbsp;</h2>
+              <p>Anda dapat meletakkan perintah lain di dalam blok perintah IF, misalnya perintah <b>cetak</b>.<img src="assets/global/img/codeguides/PRINT.png"/>
+              </p>
+            </div>
+          </li> <!-- .cd-single-step -->
+
+          <li class="cd-single-step" style="top:175px;left:45.5%;" data-condition="disabled" data-selector="">
+            <span>&nbsp;</span>
+
+            <div class="cd-more-info right">
+              <h2>&nbsp;</h2>
+              <img src="images/demo/01-step-4.png" alt="01 step 4">
+              <p>Letakkan di dalam perintah <b>If</b>.</p>
+              <p>Tekan <b>selanjutnya</b> untuk melanjutkan tur.</p>
+            </div>
+          </li> <!-- .cd-single-step -->
+
+          <li class="cd-single-step" style="top:75px;left:93.1%;" data-condition="click" data-selector="#navbar > nav > .row > div:eq(2) > span">
+            <span>&nbsp;</span>
+
+            <div class="cd-more-info left">
+              <h2>&nbsp;</h2>
+              <p>Jalankan Program.</p>
+            </div>
+          </li> <!-- .cd-single-step -->
+
+          <li class="cd-single-step" style="top:164px;left:68.1%;" data-condition="disabled" data-selector="">
+            <span>&nbsp;</span>
+
+            <div class="cd-more-info left">
+              <h2>&nbsp;</h2>
+              <p>Karena perbandingan pada argumen IF bernilai benar, maka perintah di dalam blok IF akan dieksekusi. Perintah yang dieksekusi adalah perintah PRINT yang telah diletakkan sebelumnya.</h2>
+              <p>Tekan <b>next</b> untuk melanjutkan.</p>
+            </div>
+          </li> <!-- .cd-single-step -->
+        </ul>
+      <!-- [End Of] Tour Dialog -->
+
+      <!-- Modals -->
+        <div class="modal fade" id="DeleteVarModal" tabindex="-1" role="dialog" aria-labelledby="DeleteVariableModal" aria-hidden="true">
+          <div class="modal-dialog">
+          <form id="variableDelete">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="CreateVariableModal">Hapus Variabel</h4>
+              </div>
+              <div class="modal-body">
+                <div class="alert alert-danger errMessage" role="alert" style="display:none"></div>
+                <p>Sebelum melanjutkan menghapus variabel, pastikan seluruh perintah yang berhubungan dengan variabel ini pada Program Utama telah dihapus.</p>
+                Konfirmasi untuk menghapus variabel : <span class="_vname"></span> dengan tipe data <span class="_vtype"></span>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-info" data-dismiss="modal">Batalkan</button>
+                <button type="submit" class="btn btn-danger">Hapus</button>
+              </div>
+            </div>
+          </form>
+          </div>
+        </div>
+        <div class="modal fade" id="CreateVarModal" tabindex="-1" role="dialog" aria-labelledby="CreateVariableModal" aria-hidden="true">
+          <div class="modal-dialog">
+          <form id="variableCreation">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="CreateVariableModal">Buat Variabel</h4>
+              </div>
+              <div class="modal-body">
+                  <style>
+                  #addVartype .btn {
+                    border-radius: 0;
+                  }
+                  #addVartype i {
+                    font-weight: 300;
+                  }
+
+                  #addVartype .btn .label-inverse {
+                    background-color: #fff;
+                    color: #337ab7;
+                  }
+                  </style>
+                  <input type="text" placeholder="Nama variabel" name="addVarname" class="form-control">
+                  <div style="margin-top:10px">
+                    <label>Tipe data</label>
+                    <div id="addVartype" data-toggle="buttons" class="clearfix">
+                      <label class="btn btn-primary col-md-6">
+                        <input type="radio" name="optVartype" value="integer" id="opt-vartype1" autocomplete="off">
+                        <h2>Integer</h2>
+                        <i>Contoh</i>
+                        <div>
+                          <span class="label label-inverse">...</span> , 
+                          <span class="label label-inverse">-3</span> , 
+                          <span class="label label-inverse">-2</span> , 
+                          <span class="label label-inverse">-1</span> , 
+                          <span class="label label-inverse">0</span> , 
+                          <span class="label label-inverse">1</span> , 
+                          <span class="label label-inverse">2</span> , 
+                          <span class="label label-inverse">3</span> , 
+                          <span class="label label-inverse">...</span>
+                        </div>
+                      </label>
+                      <label class="btn btn-primary col-md-6">
+                        <input type="radio" name="optVartype" value="real" id="opt-vartype2" autocomplete="off">
+                        <h2>Real</h2>
+                        <i>Contoh</i>
+                        <div>
+                          <span class="label label-inverse">...</span> , 
+                          <span class="label label-inverse">-0.2</span> , 
+                          <span class="label label-inverse">-0.1</span> , 
+                          <span class="label label-inverse">0.0</span> , 
+                          <span class="label label-inverse">0.1</span> , 
+                          <span class="label label-inverse">0.2</span> , 
+                          <span class="label label-inverse">...</span>
+                        </div>
+                      </label>
+                      <label class="btn btn-primary col-md-6">
+                        <input type="radio" name="optVartype" value="logical" id="opt-vartype3" autocomplete="off">
+                        <h2>Logical (Boolean)</h2>
+                        <i>Contoh</i>
+                        <div>
+                          <span class="label label-inverse">true</span> , 
+                          <span class="label label-inverse">false</span>
+                        </div>
+                      </label>
+                      <label class="btn btn-primary col-md-6">
+                        <input type="radio" name="optVartype" value="string" id="opt-vartype4" autocomplete="off">
+                        <h2>String</h2>
+                        <i>Contoh</i>
+                        <div>
+                          <span class="label label-inverse">&quot;a&quot;</span> , 
+                          <span class="label label-inverse">&quot;ab&quot;</span> , 
+                          <span class="label label-inverse">&quot;abc&quot;</span> , 
+                          <span class="label label-inverse">&quot;abcd&quot;</span> , 
+                          <span class="label label-inverse">&quot;...&quot;</span>
+                        </div>
+                      </label>
+                    </div>
+                  </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Batalkan</button>
+                <button type="submit" class="btn btn-info">Simpan</button>
+              </div>
+            </div>
+          </form>
+          </div>
+        </div>
+        <div class="modal fade" id="DeleteArrModal" tabindex="-1" role="dialog" aria-labelledby="DeleteArrayModal" aria-hidden="true">
+          <div class="modal-dialog">
+          <form id="variableDelete">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="CreateVariableModal">Hapus List</h4>
+              </div>
+              <div class="modal-body">
+                <div class="alert alert-danger errMessage" role="alert" style="display:none"></div>
+                <p>Sebelum melanjutkan menghapus list, pastikan seluruh perintah yang berhubungan dengan list ini pada Program Utama telah dihapus.</p>
+                Konfirmasi untuk menghapus list : <span class="_vname"></span> dengan tipe data <span class="_vtype"></span>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-info" data-dismiss="modal">Batalkan</button>
+                <button type="submit" class="btn btn-danger">Hapus</button>
+              </div>
+            </div>
+          </form>
+          </div>
+        </div>
+        <div class="modal fade" id="CreateArrModal" tabindex="-1" role="dialog" aria-labelledby="CreateArrayModal" aria-hidden="true">
+          <div class="modal-dialog">
+          <form id="variableCreation">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="CreateArrayModal">Buat List</h4>
+              </div>
+              <div class="modal-body">
+                <style>
+                #addVartype .btn {
+                  border-radius: 0;
+                }
+                #addVartype i {
+                  font-weight: 300;
+                }
+                #addVartype .btn .label-inverse {
+                  background-color: #fff;
+                  color: #337ab7;
+                }
+                </style>
+                <input type="text" placeholder="Nama Variabel List" name="addVarname" class="form-control">
+                <div style="margin-top:10px">
+                  <label>Tipe data</label>
+                  <div id="addVartype" data-toggle="buttons" class="clearfix">
+                    <label class="btn btn-primary col-md-6">
+                      <input type="radio" name="optVartype" value="integer" id="opt-vartype1" autocomplete="off">
+                      <h2>Integer</h2>
+                      <i>Contoh</i>
+                      <div>
+                        <span class="label label-inverse">...</span> , 
+                        <span class="label label-inverse">-3</span> , 
+                        <span class="label label-inverse">-2</span> , 
+                        <span class="label label-inverse">-1</span> , 
+                        <span class="label label-inverse">0</span> , 
+                        <span class="label label-inverse">1</span> , 
+                        <span class="label label-inverse">2</span> , 
+                        <span class="label label-inverse">3</span> , 
+                        <span class="label label-inverse">...</span>
+                      </div>
+                    </label>
+                    <label class="btn btn-primary col-md-6">
+                      <input type="radio" name="optVartype" value="real" id="opt-vartype2" autocomplete="off">
+                      <h2>Real</h2>
+                      <i>Contoh</i>
+                      <div>
+                        <span class="label label-inverse">...</span> , 
+                        <span class="label label-inverse">-0.2</span> , 
+                        <span class="label label-inverse">-0.1</span> , 
+                        <span class="label label-inverse">0.0</span> , 
+                        <span class="label label-inverse">0.1</span> , 
+                        <span class="label label-inverse">0.2</span> , 
+                        <span class="label label-inverse">...</span>
+                      </div>
+                    </label>
+                    <label class="btn btn-primary col-md-6">
+                      <input type="radio" name="optVartype" value="logical" id="opt-vartype3" autocomplete="off">
+                      <h2>Logical (Boolean)</h2>
+                      <i>Contoh</i>
+                      <div>
+                        <span class="label label-inverse">true</span> , 
+                        <span class="label label-inverse">false</span>
+                      </div>
+                    </label>
+                    <label class="btn btn-primary col-md-6">
+                      <input type="radio" name="optVartype" value="string" id="opt-vartype4" autocomplete="off">
+                      <h2>String</h2>
+                      <i>Contoh</i>
+                      <div>
+                        <span class="label label-inverse">&quot;a&quot;</span> , 
+                        <span class="label label-inverse">&quot;ab&quot;</span> , 
+                        <span class="label label-inverse">&quot;abc&quot;</span> , 
+                        <span class="label label-inverse">&quot;abcd&quot;</span> , 
+                        <span class="label label-inverse">&quot;...&quot;</span>
+                      </div>
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Batalkan</button>
+                <button type="submit" class="btn btn-info">Simpan</button>
+              </div>
+            </div>
+          </form>
+          </div>
+        </div>
+      <!-- [End Of] Modals -->
+    </script>
+  <!--END OF PAGES-->
+
+  <script src="assets/global/js/PageDefault.js"></script>
+  <script src="assets/global/js/tourCore.js"></script>
+  <script src="assets/global/js/ratingCore.js"></script>
+  <script src="assets/pages/js/PageWorkspace/ArraysAndVariables.js"></script>
+  <script src="assets/pages/js/PageWorkspace/CoreWorkspace.js"></script>
+  <script src="assets/pages/js/PageWorkspace/GuiManager.js"></script>
+  <script src="assets/pages/js/PageIntro.js"></script>
+  <script src="assets/pages/js/PageProgram.js"></script>
+
+
+
+  <script type="text/javascript" src="scripts/app.js"></script>
+  <script type="text/javascript" src="scripts/models/project_model.js"></script>
+  <script type="text/javascript" src="scripts/collections/project_collection.js"></script>
+  <script type="text/javascript" src="scripts/views/Intro.js"></script>
+  <script type="text/javascript" src="scripts/views/Project/ProjectsView.js"></script>
+  <script type="text/javascript" src="scripts/views/Project/ProjectWorkspace.js"></script>
+  <script type="text/javascript" src="scripts/router.js"></script>
+
+</body>
+</html> 

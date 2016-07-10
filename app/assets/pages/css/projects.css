@@ -1,0 +1,15 @@
+#datatable_projectlist_wrapper {
+  height: 100%;
+  width: 100%;
+  display: table;
+}
+#datatable_projectlist_wrapper .row {
+  height: 1px;
+  display: table-row;
+}
+#datatable_projectlist_wrapper .pull-left, #datatable_projectlist_wrapper .pull-right {
+  padding: 10px 0;
+}
+#datatable_projectlist_wrapper table {
+  height: 1px;
+}

@@ -1,0 +1,677 @@
+/* TOOLBOX STATEMENT & GROUP STATEMENT */
+
+.tboxstatement, .groupstatement {
+	list-style-type: none;
+	padding: 0;
+	margin: 1px;
+}
+.tboxstatement > li, .groupstatement > li {
+	margin: 1px 0;
+	border-left: 10px solid #eee;
+	color: rgb(0, 136, 204);
+	transition: opacity 0.2s;
+	opacity: 1;
+}
+.tboxstatement > li {
+	margin: 10px 0;
+}
+.tboxstatement > li.dragged, .groupstatement > li.dragged  {
+	opacity: 0.8;
+	position: absolute;
+	visibility: visible;
+	z-index: 101;
+}
+.tboxstatement li > .arg, .groupstatement li > .arg {
+	display: table-cell;
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+}
+.tboxstatement li .arg > span, .groupstatement li .arg > span {
+	display: table-cell;
+	float: left;
+	margin: 5px 0;
+}
+.tboxstatement li .arg > span:last-child, .groupstatement li .arg > span + span:last-child {
+	margin-right: 10px;
+}
+.tboxstatement li .arg > span.commandText, .groupstatement li .arg > span.commandText {
+	font-weight: 700;
+}
+.tboxstatement, .groupstatement li .arg > span {
+	position: relative;
+}
+.tboxstatement, .groupstatement li .arg > span .statement--handle {
+	cursor: pointer;
+}
+
+
+.tboxstatement li.operator > .arg, .groupstatement li.operator > .arg {
+	background: #eee;
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+}
+
+.startprogram li .arg > span .statement--handle {
+	opacity: 0;
+	width: 0;
+	transition: all .1s;
+}
+.startprogram li .arg .commandText:hover > span .statement--handle {
+	opacity: 1;
+	width: 20px;
+}
+.startprogram li .arg .commandText:hover > span .statement--handle.disable {
+	opacity: 0;
+	width: 0;
+}
+.tboxstatement li.block-statement > .block-statement-endline, .groupstatement li.block-statement > .block-statement-endline {
+	position: relative;
+	display: inline-block;
+	height: 20px;
+	margin-bottom: -20px;
+	color: #fff;
+}
+.tboxstatement li.block-statement.perulangan > .block-statement-endline, .groupstatement li.block-statement.perulangan > .block-statement-endline {	
+	bottom: -5px;
+	width: 20px;
+	left: 80px;
+	padding: 0 4px;
+	text-align: center;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+}
+.tboxstatement li.block-statement.kondisi > .block-statement-endline.middle, .groupstatement li.block-statement.kondisi > .block-statement-endline.middle {
+	bottom: 0;
+	margin-top: 5px;
+}
+.tboxstatement li.block-statement.kondisi > .block-statement-endline, .groupstatement li.block-statement.kondisi > .block-statement-endline {
+	bottom: -5px;
+	min-width: 105px;
+	text-transform: uppercase;
+	font-size: 13px;
+	font-weight: 700;
+	display: inline-block;
+	line-height: 20px;
+	padding: 0 4px;
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+}
+.tboxstatement li.block-statement::after, .groupstatement li.block-statement::after {
+	content: "";
+	height: 5px;
+	width: 100px;
+	background: #eee;
+	display: table;
+}
+.groupstatement > li span.argvariable, .tboxstatement > li span.argvariable {
+	margin-left: 5px;
+	margin-right: 5px;
+	margin-bottom: 0;
+}
+.groupstatement > li span.argvariable:first-child, .tboxstatement > li span.argvariable:first-child {
+	margin-left: 0;
+}
+
+.groupstatement > li span.exprvariable, .tboxstatement > li span.exprvariable {
+  font-weight: 700;
+  position: relative;
+  display: inline-block;
+  padding: 0 5px;
+  line-height: 20px;
+  margin-left: 10px;
+  margin-right: 10px;
+  background-color: #1142AA;
+  cursor: pointer; /* need to fix */
+}
+.groupstatement > li span.exprvariable:before, .tboxstatement > li span.exprvariable:before {
+  content: "";
+  position: absolute;
+  display: inline-block;
+  width: 0;
+  height: 0;
+  line-height: 0;
+  border: 10px solid transparent;
+  border-right: 10px solid #1142AA;
+  left: -20px;
+  top: 0em;
+}
+.groupstatement > li span.exprvariable:after, .tboxstatement > li span.exprvariable:after {
+  content: "";
+  position: absolute;
+  display: inline-block;
+  width: 0;
+  height: 0;
+  line-height: 0;
+  border: 10px solid transparent;
+  border-left: 10px solid #1142AA;
+  right: -20px;
+  top: 0;
+}
+.groupstatement > li span.exprvariable.varempty {
+	background-color: rgba(255,255,255,0.5);
+	color: rgba(255,255,255,0.5);
+}
+.groupstatement > li span.exprvariable.varempty:before {
+	border-right: 10px solid rgba(255,255,255,0.5);
+}
+.groupstatement > li span.exprvariable.varempty:after {
+	border-left: 10px solid rgba(255,255,255,0.5);
+}
+.groupstatement > li span.exprvariable span.varname, .tboxstatement > li span.exprvariable span.varname {
+	display: table-cell;
+	vertical-align: middle;
+}
+.groupstatement > li span.exprvariable span.varidx, .tboxstatement > li span.exprvariable span.varidx {
+	display: table-cell;
+	vertical-align: middle;
+	padding-left: 5px;
+}
+.groupstatement > li span.exprdefault, .tboxstatement > li .definition span.exprdefault {
+	background: #fff;
+	color: #333;
+	border-radius: 10px;
+	padding: 1px 2px;
+	width: 26px;
+	height: 21px;
+	text-align: center;
+	margin-left: 5px;
+	margin-right: 10px;
+	font-size: 13px;
+	font-weight: 700;
+}
+
+
+/* TOOLBOX STATEMENT */
+.tboxstatement > li:not(.dragged):hover  {
+	-webkit-filter: drop-shadow(2px 2px rgba(0, 0, 0, 0.49));
+}
+.tboxstatement > li {
+	border-top-left-radius: 5px;
+	border-bottom-left-radius: 5px;
+}
+
+/* GROUP STATEMENT */
+.groupstatement {
+	min-width: 600px;
+}
+.pre_startprogram {
+	height: 400px;
+	overflow-y: scroll;
+}
+.startprogram {
+	padding: 10px;
+	min-height: 400px;
+}
+.startprogram > li:first-child {
+	border-top-left-radius: 5px;
+}
+.startprogram > li:last-child {
+	border-bottom-left-radius: 5px;
+}
+.groupstatement li .arg > span {
+	margin-right : 10px;
+}
+.groupstatement > li.placeholder {
+	height : 30px;
+	border: 2px dashed #fff;
+}
+.groupstatement li > .arg > .argvariable {
+	margin: 0;
+}
+
+
+
+
+li.a {
+	background: #d4d20b;
+}
+li.a {
+	background: #d45b0b;
+}
+li.temp {
+	opacity: .3;
+}
+.exprstatement {
+  width: 100%;
+  transition: all 0.12s;
+  box-sizing: border-box;
+  display: block;
+  list-style-type: none;
+  margin: 0 5px;
+  padding: 0px 2px;
+  min-height: 20px;
+}
+.exprstatement::before {
+	display: table;
+	content: " ";
+}
+.exprstatement li {
+  float: left;
+  border: none;
+  padding: 0px 5px;
+  margin: 2px;
+}
+.exprstatement li.emptyexpr {
+  background: #fff;
+  border-radius: 10px;
+}
+.exprstatement li.comment {
+}
+.exprstatement li.placeholder {
+	background: #aaa;
+	width: 20px;
+	height: 20px;
+	margin: 0;
+	border-radius: 10px;
+}
+.tboxstatement .exprstatement > li.emptyexpr {
+	color: #999;
+}
+
+
+/* TOOLBOX EXPRESSION */
+
+.tboxexpression > li {
+	padding: 10px 0;
+	transition: opacity 0.2s;
+}
+.tboxexpression > li:not(.dragged):hover  {
+	-webkit-filter: drop-shadow(2px 2px rgba(0, 0, 0, 0.49));
+}
+.tboxexpression > li .arg {
+	cursor: pointer;
+}
+.tboxexpression > li.operation .arg {
+	box-shadow: 0px 1px 2px rgba(0,0,0,0.5);
+	padding: 3px;
+	position: relative;
+	z-index: 99;
+	border-radius: 10px;
+	display: inline-block;
+	background: #eee;
+	opacity: 1;
+}
+.tboxexpression > li.variable span.exprvariable {
+	font-weight: 700;
+	position: relative;
+	display: inline-block;
+	padding: 0 5px;
+	line-height: 20px;
+	margin-left: 10px;
+	margin-right: 10px;
+	background-color: #1142AA;
+	color: #fff;
+}
+.tboxexpression > li.variable span.exprvariable:before {
+	content: "";
+	position: absolute;
+	display: inline-block;
+	width: 0;
+	height: 0;
+	line-height: 0;
+	border: 10px solid transparent;
+	border-right: 10px solid #1142AA;
+	left: -20px;
+	top: 0em;
+}
+.tboxexpression > li.variable span.exprvariable:after {
+	content: "";
+	position: absolute;
+	display: inline-block;
+	width: 0;
+	height: 0;
+	line-height: 0;
+	border: 10px solid transparent;
+	border-left: 10px solid #1142AA;
+	right: -20px;
+	top: 0;
+}
+.tboxexpression > li.variable span.varname {
+	display: table-cell;
+	vertical-align: middle;
+}
+.tboxexpression > li.variable span.varidx {
+	display: table-cell;
+	vertical-align: middle;
+	padding-left: 5px;
+}
+.tboxexpression > li .definition span.exprdefault {
+	background: #fff;
+	color: #333;
+	border-radius: 10px;
+	padding: 5px 5px 4px;
+	font: 12px verdana;
+	border: none;
+	text-align: center;
+	height: auto;
+	font-size: 12px;
+	float: none;
+	box-shadow: none;
+}
+.tboxexpression > li .definition span.exproperator {
+	font-size: 17px;
+	color: #000;
+	font-weight: 700;
+	padding: 0 5px;
+	transition: shadow 0.2s;
+}
+.tboxexpression > li .definition span.exproperator:hover {
+	text-shadow: 0px 0px 2px #000;
+}
+.tboxexpression, .groupexpression, .groupexpression li > ol {
+	display: table;
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+}
+
+
+/* GROUP EXPRESSION */
+/* GROUP EXPRESSION [elm-core] */
+	.tboxexpression, .groupexpression {
+		list-style-type: none;
+		padding: 0;
+		margin: 0;
+	}
+	.tboxexpression > li.dragged, .groupexpression > li.dragged {
+		opacity: 0.6;
+		position: absolute;
+		z-index: 100;
+		visibility: visible;
+	}
+
+	.groupexpression {
+		display: table;
+	}
+	.groupexpression li {
+		display: table-cell;
+		vertical-align: middle;
+	}
+	.groupexpression .dummylist {
+		width: 5px;
+	}
+	.groupexpression .dummylist:first-child {
+		margin-bottom: 5px;
+	}
+	.groupexpression .dummylist:last-child {
+		margin-top: 5px;
+	}
+	.groupexpression li.placeholder {
+		position: relative;
+	}
+	.groupexpression li.placeholder:before {
+		position: absolute;
+		z-index: 99;
+		content: "";
+		width: 10px;
+		height: 10px;
+		left: calc(50% - 5px);
+		top: -2px;
+		border-radius: 50%;
+		box-shadow: 1px 1px 1px rgba(0,0,0,0.5);
+		background: radial-gradient(circle at 1px 1px, #fff, #999);
+	}
+/* GROUP EXPRESSION [elm-core] */
+.groupexpression > li > ol.operation {
+	box-shadow: 0px 1px 2px rgba(0,0,0,0.5);
+	padding: 1.2px 3px;
+	position: relative;
+	z-index: 99;
+	border-radius: 10px;
+	background: #eee;
+	transition: opacity 0.2s;
+	opacity: 1;
+	cursor: pointer;
+	border-left: 2px solid #000;
+	border-right: 2px solid #000;
+}
+.groupexpression > li.exprdefault {
+	background: #fff;
+	color: #333;
+	border-radius: 10px;
+}
+.groupexpression > li.exproperator {
+	font-size: 17px;
+	color: #000;
+	font-weight: 700;
+	margin: auto 10px;
+	padding: 0 5px;
+	transition: shadow 0.2s;
+	-webkit-transition: shadow 0.2s;
+}
+.groupexpression > li.exproperator:hover {
+	text-shadow: 0px 0px 2px #000;
+}
+
+.groupexpression li.exprdefault .input-group {
+	font: 12px verdana;
+	border: none;
+}
+.groupexpression li.exprdefault .input-group .expr-input-prefix {
+	color: #337ab7;
+	background-color: transparent;
+	border: none;
+	height: auto;
+	font-size: 12px;
+	border-radius: 10px;
+}
+.groupexpression li.exprdefault.arridx .input-group .input {
+	padding: 1px;
+	font: 11px verdana;
+	width: 30px;
+}
+.groupexpression li.exprdefault .input-group .input {
+	padding: 5px 5px 4px;
+	font: 12px verdana;
+	border: none;
+	background: transparent;
+	text-align: center;
+	height: auto;
+	float: none;
+	box-shadow: none;
+}
+.groupexpression li.exprdefault .input-group .input-group-btn {
+	width: auto;
+}
+.groupexpression li.exprdefault .input-group .expr-input-btn {
+	height: auto;
+	padding: 5px;
+	line-height: 12px;
+	display: none;
+}
+.groupexpression.operation li.exprdefault .input-group .expr-input-prefix {
+	display: none;
+}
+.groupexpression li.exprdefault .input-group.focus .expr-input-prefix {
+	display: table-cell;
+}
+.groupexpression li.exprdefault .input-group.focus .expr-input-btn {
+	display: table-cell;
+}
+
+
+.groupexpression > li > ol.variablelist {
+    font-weight: 700;
+    position: relative;
+    padding: 0 5px;
+    line-height: 24px;
+    margin-left: 15px;
+    margin-right: 15px;
+    background-color: #1142AA;
+    cursor: pointer;
+}
+.groupexpression > li > ol.variablelist:before {
+    content: "";
+    position: absolute;
+    display: inline-block;
+    width: 0;
+    height: 0;
+    line-height: 0;
+    border: 12px solid transparent;
+    border-right: 15px solid #1142AA;
+    left: -22px;
+    top: 0px;
+}
+.groupexpression > li > ol.variablelist:after {
+    content: "";
+    position: absolute;
+    display: inline-block;
+    width: 0;
+    height: 0;
+    line-height: 0;
+    border: 12px solid transparent;
+    border-left: 15px solid #1142AA;
+    right: -22px;
+    top: 0;
+}
+.groupexpression > li > ol.variablelist li.exprdefault .input-group .expr-input-prefix {
+	display: none;
+}
+
+.groupstatement > li.selected:not(.dragged), .groupexpression > li.selected:not(.dragged) {
+	-webkit-filter: drop-shadow(0px 0px 5px rgba(0, 0, 0, 1));
+}
+.groupstatement > li.point-warning:not(.dragged), .groupexpression > li.point-warning:not(.dragged) {
+	-webkit-filter: drop-shadow(0px 0px 5px rgb(255, 247, 0));
+}
+.groupstatement > li.point-danger:not(.dragged), .groupexpression > li.point-danger:not(.dragged) {
+	-webkit-filter: drop-shadow(0px 0px 5px rgb(253, 26, 26));
+}
+
+/* SAMPLE DIAGRAM */
+.diagram-sample:before {
+	content: " ";
+}
+.diagram-sample.sample-expr {
+	width: 40px;
+	height: 15px;
+	display: inline-block;
+	border-radius: 10px;
+	background: #efefef;
+	border: 1px solid #D5D5D5;
+}
+.diagram-sample.sample-var {
+    position: relative;
+    display: inline-block;
+    padding: 0 5px;
+    line-height: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+    background-color: #efefef;
+    -webkit-filter: drop-shadow(0px 1px 0px #000);
+}
+.diagram-sample.sample-var:before {
+    content: "";
+    position: absolute;
+    display: inline-block;
+    width: 0;
+    height: 0;
+    line-height: 0;
+    border: 10px solid transparent;
+    border-right: 10px solid #efefef;
+    left: -20px;
+    top: 0em;
+}
+.diagram-sample.sample-var:after {
+    content: "";
+    position: absolute;
+    display: inline-block;
+    width: 0;
+    height: 0;
+    line-height: 0;
+    border: 10px solid transparent;
+    border-left: 10px solid #efefef;
+    right: -20px;
+    top: 0;
+}
+
+
+/* DIAGRAM CONTEXT MENU */
+#pre_diagram_context-menu {
+	z-index: 1000;
+	left: 0;
+	top: 0;
+	visibility: hidden;
+	opacity: 0;
+	position: absolute;
+	display: block;
+	text-align: left;
+	pointer-events: none;
+}
+#pre_diagram_context-menu.active {
+	opacity: 1;
+	visibility: visible;
+	pointer-events: auto;
+}
+#diagram_context-menu {
+	position: relative;
+	padding: 0;
+	background: #fff;
+	-webkit-transition: visibility 0s, opacity 0s;
+	-moz-transition: visibility 0s, opacity 0s;
+	transition: visibility 0s, opacity 0s;
+	-webkit-box-shadow: 0 3px 8px rgba(0, 0, 0, .10);
+	box-shadow: 0 3px 8px rgba(0, 0, 0, .10);
+	margin-left: -50%;
+	margin-right: 50%;
+	margin-top: 10px;
+}
+#pre_diagram_context-menu.above #diagram_context-menu:before {
+	border: solid transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+	border-top-color: #fff;
+	border-width: 15px;
+	margin-left: -10px;
+	left: 50%;
+	bottom: -30px;
+}
+#pre_diagram_context-menu.below #diagram_context-menu:before {
+	border: solid transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+	border-bottom-color: #fff;
+	border-width: 15px;
+	margin-left: -10px;
+	left: 50%;
+	top: -30px;
+}
+#diagram_context-menu > li {
+	display: block;
+	background: #fff;
+}
+#diagram_context-menu > li.divider {
+	height: 1px;
+	margin: 3px 0;
+	overflow: hidden;
+	background-color: #e5e5e5;
+}
+#diagram_context-menu > li > div {
+	padding: 3px 60px 3px 10px;
+	display: block;
+	font-size: 16px;
+	position: relative;
+	color: #47a3da;
+	border: 2px solid #fff;
+	-webkit-transition: all 0.2s;
+	transition: all 0.2s;
+	cursor: pointer;
+}
+#diagram_context-menu > li > div > span {
+	position: absolute;
+	right: 10px;
+	width: 50px;
+	text-align: right;
+}
+#diagram_context-menu > li > div:hover,
+#diagram_context-menu > li > div:active {
+	color: #fff;
+	background: #47a3da;
+	text-decoration: none;
+}
