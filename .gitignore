@@ -1,0 +1,5 @@
+#blacklist
+/app/node_modules
+
+#whitelist files
+!/.gitignore
